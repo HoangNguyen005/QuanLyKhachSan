@@ -44,7 +44,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.BackColor = System.Drawing.Color.Teal;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -59,7 +59,7 @@
             this.panel2.Controls.Add(this.btnEmployee);
             this.panel2.Controls.Add(this.btnRoomBook);
             this.panel2.Controls.Add(this.btnHome);
-            this.panel2.Location = new System.Drawing.Point(3, 61);
+            this.panel2.Location = new System.Drawing.Point(0, 86);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(282, 527);
             this.panel2.TabIndex = 0;
@@ -73,7 +73,7 @@
             this.btnPay.FlatAppearance.BorderSize = 0;
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.ForeColor = System.Drawing.Color.Black;
+            this.btnPay.ForeColor = System.Drawing.Color.White;
             this.btnPay.Image = ((System.Drawing.Image)(resources.GetObject("btnPay.Image")));
             this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPay.Location = new System.Drawing.Point(-3, 324);
@@ -94,7 +94,7 @@
             this.btnClient.FlatAppearance.BorderSize = 0;
             this.btnClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClient.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClient.ForeColor = System.Drawing.Color.Black;
+            this.btnClient.ForeColor = System.Drawing.Color.White;
             this.btnClient.Image = ((System.Drawing.Image)(resources.GetObject("btnClient.Image")));
             this.btnClient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClient.Location = new System.Drawing.Point(-3, 192);
@@ -115,7 +115,7 @@
             this.btnEmployee.FlatAppearance.BorderSize = 0;
             this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployee.ForeColor = System.Drawing.Color.Black;
+            this.btnEmployee.ForeColor = System.Drawing.Color.White;
             this.btnEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployee.Image")));
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmployee.Location = new System.Drawing.Point(-6, 258);
@@ -136,7 +136,7 @@
             this.btnRoomBook.FlatAppearance.BorderSize = 0;
             this.btnRoomBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRoomBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRoomBook.ForeColor = System.Drawing.Color.Black;
+            this.btnRoomBook.ForeColor = System.Drawing.Color.White;
             this.btnRoomBook.Image = ((System.Drawing.Image)(resources.GetObject("btnRoomBook.Image")));
             this.btnRoomBook.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRoomBook.Location = new System.Drawing.Point(-6, 126);
@@ -150,14 +150,14 @@
             // 
             // btnHome
             // 
-            this.btnHome.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnHome.BackColor = System.Drawing.Color.Transparent;
             this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.Black;
+            this.btnHome.ForeColor = System.Drawing.Color.White;
             this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHome.Location = new System.Drawing.Point(-3, 60);
@@ -175,16 +175,16 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(282, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1052, 64);
+            this.panel3.Size = new System.Drawing.Size(1052, 35);
             this.panel3.TabIndex = 1;
             // 
             // panel_body
             // 
             this.panel_body.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_body.Location = new System.Drawing.Point(282, 64);
+            this.panel_body.Location = new System.Drawing.Point(282, 35);
             this.panel_body.Name = "panel_body";
-            this.panel_body.Size = new System.Drawing.Size(1052, 682);
+            this.panel_body.Size = new System.Drawing.Size(1052, 711);
             this.panel_body.TabIndex = 2;
             // 
             // frmMain
