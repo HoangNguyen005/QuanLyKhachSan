@@ -22,36 +22,97 @@ namespace QuanLyKhachSan
         private SqlConnection mySqlConnection;
         //định nghĩa đối tượng truy vấn/cập nhật dữ liệu
         private SqlCommand mySqlCommand;
+
+        private string category = "";
+        private string status = "";
+        private string floor = "";
+        
         public frmBookingRoom()
         {
             InitializeComponent();
         }
 
-        private void LoadDanhSachPhong()
+        private void LoadDanhSachPhong(int roomNumber = 0, string category = "", string status = "", string floor = "")
         {
            
-            string query = "SELECT * FROM Phong";
+            string query = "";
+
+            if (category == "" && status == "" && floor == "")
+            {
+                query = "SELECT * FROM Phong";
+            }
+            if (category != "" || status != "" || floor != "")
+            {
+                query = $"SELECT * FROM Phong WHERE LoaiPhong LIKE  N'%{category}' AND TrangThai LIKE N'%{status}' AND Tang LIKE '%{floor}'";
+            }
+
+            if (roomNumber != 0)
+            {
+                query = $"SELECT * FROM Phong WHERE MaPhong = {roomNumber}";
+            }
+            //if (category != "" && status == "")
+            //{
+            //    query = $"SELECT * FROM Phong WHERE LoaiPhong = N'{category}'";
+            //}
+            //if (category == "" && status != "")
+            //{
+            //    query = $"SELECT * FROM Phong WHERE TrangThai = N'{status}'";
+            //}
+            //if (category == "" && status == "" && floor != 0)
+            //{
+            //    query = $"SELECT * FROM Phong WHERE Tang = {floor}";
+
+            //}
+
+            //if (category == "")
+            //{
+            //    if (status == "")
+            //    {
+            //        if (floor == 0)
+            //        {
+            //            query = $"SELECT * FROM Phong";
+            //        }
+            //        else
+            //        {
+            //            query = $"SELECT * FROM Phong WHERE Tang = {floor}" ;
+            //        }
+            //    } 
+            //    else
+            //    {
+            //        query = $"SELECT * FROM Phong WHERE TrangThai = N'{status}' AND Tang = {floor}" ;
+            //    }
+            //} 
+            //else
+            //{
+            //    query = $"SELECT * FROM Phong WHERE LoaiPhong = N'{category}' AND TrangThai = N'{status}' AND Tang = {floor}" ;
+            //}
+
 
             using (SqlConnection conn = new SqlConnection(conStr))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                flowLayoutPanel1.Controls.Clear();
-
-                while (reader.Read())
                 {
-                    var uc = new ucRoom();
-                    uc.MaPhong = reader["MaPhong"].ToString();
-                    uc.TrangThai = reader["TrangThai"].ToString();
-                    //uc.TenKhach = reader["TenKhach"]?.ToString();
-                    //uc.SoNgay = TinhSoNgay(reader["NgayNhan"], reader["NgayTra"]);
-                    //uc.DonDep = reader["DaDonDep"].ToString() == "1" ? "Đã dọn dẹp" : "Chưa dọn";
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    flowLayoutPanel1.Controls.Add(uc);
+                    flowLayoutPanel1.Controls.Clear();
+                    //if(!reader.Read())
+                    //{
+                    //    MessageBox.Show("Không có dữ liệu tương ứng", "Thông báo");
+                    //    tbSearchRoomNumber.Clear();
+
+                    //    LoadDanhSachPhong();
+                    //    return;
+                    //}
+                    while (reader.Read())
+                    {
+                        var uc = new ucRoom();
+                        uc.MaPhong = reader["MaPhong"].ToString();
+                        uc.TrangThai = reader["TrangThai"].ToString();
+                        uc.LoaiPhong = reader["LoaiPhong"].ToString();
+
+                        flowLayoutPanel1.Controls.Add(uc);
+                    }
                 }
-            }
         }
 
 
@@ -83,6 +144,53 @@ namespace QuanLyKhachSan
             //dataGridView1.DataSource = dtSupplier;
             ////đóng đối tượng DataReader
             //drSuppliers.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            category = cbCategory.Text;
+            LoadDanhSachPhong(0, category, status, floor);
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            status = cbStatus.Text;
+            LoadDanhSachPhong(0, category, status, floor);
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (tbSearchRoomNumber.Text.Trim() == "")
+            {
+                LoadDanhSachPhong();
+                tbSearchRoomNumber.Clear();
+                return;
+            }
+            LoadDanhSachPhong(int.Parse(tbSearchRoomNumber.Text.Trim()));
+            tbSearchRoomNumber.Clear();
+
+        }
+
+        private void tbSearchRoomNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSearchRoomNumber_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                LoadDanhSachPhong(int.Parse(tbSearchRoomNumber.Text.Trim()));
+            }
+        }
+
+        private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            floor = cbFloor.Text;
+            LoadDanhSachPhong(0, category, status, floor);
+
         }
     }
 }

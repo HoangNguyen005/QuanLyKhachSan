@@ -13,28 +13,13 @@ namespace QuanLyKhachSan
     public partial class frmMain: Form
 
     {
+        public int ROOM_CODE;
 
         public frmMain()
         {
             InitializeComponent();
         }
 
-        //private Form frmCurrent;
-        //private void openChild(Form openChild)
-        //{
-        //    if (frmCurrent != null)
-        //    {
-        //        frmCurrent.Close();
-        //    }
-        //    frmCurrent = openChild;
-        //    openChild.TopLevel = false;
-        //    openChild.FormBorderStyle = FormBorderStyle.None;
-        //    openChild.Dock = DockStyle.Fill;
-        //    layoutOverlay.Controls.Add(openChild);
-        //    layoutOverlay.Tag = openChild;
-        //    openChild.BringToFront();
-        //    openChild.Show();
-        //}
 
         private Form frmCurrent;
         private void openChild(Form frmChild)
@@ -88,6 +73,12 @@ namespace QuanLyKhachSan
         private void frmMain_Load(object sender, EventArgs e)
         {
             openChild(new frmHome());
+        }
+
+        private void btnHome_MouseHover(object sender, EventArgs e)
+        {
+            //btnHome.BackColor = Color.LightGray;
+
         }
     }
 }

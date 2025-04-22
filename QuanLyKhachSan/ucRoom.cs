@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace QuanLyKhachSan
 {
+  
     public partial class ucRoom: UserControl
     {
         public ucRoom()
@@ -30,11 +32,17 @@ namespace QuanLyKhachSan
             {
                 lbStatus.Text = value;
                 if (value == "Trống")
-                    this.BackColor = Color.ForestGreen;
+                    this.BackColor = Color.Green;
                 else
-                    this.BackColor = Color.LightSteelBlue;
+                    this.BackColor = Color.DimGray;
                
             }
+        }
+
+        public string LoaiPhong
+        {
+            get => category.Text;
+            set => category.Text = value;
         }
 
         // Tương tự cho các thuộc tính như TenKhach, SoNgay, DonDep, etc.
@@ -53,7 +61,14 @@ namespace QuanLyKhachSan
         private void ucRoom_Click(object sender, EventArgs e)
         {
             if (lbStatus.Text != "Trống") return;
-            MessageBox.Show("hello", "thong bao");
+            Global.ROOM_CODE = int.Parse(lbRoomNumber.Text.Trim());
+            Form bookingDetail = new frmBookingRoomDetail();
+            bookingDetail.ShowDialog();
+        }
+
+        private void category_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
