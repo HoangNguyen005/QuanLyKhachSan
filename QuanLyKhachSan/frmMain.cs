@@ -80,5 +80,15 @@ namespace QuanLyKhachSan
             //btnHome.BackColor = Color.LightGray;
 
         }
+
+        private void panel_body_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void roomManage_Click(object sender, EventArgs e)
+        {
+            openChild(new frmRoomManage());
+        }
     }
 }

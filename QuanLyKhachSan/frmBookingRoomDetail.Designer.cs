@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbCustomerName = new System.Windows.Forms.Label();
             this.customerName = new System.Windows.Forms.TextBox();
             this.tbIdCode = new System.Windows.Forms.TextBox();
@@ -48,6 +50,9 @@
             this.btnConfirmBooking = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
+            this.payFirst = new System.Windows.Forms.RadioButton();
+            this.payAfter = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.customerInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -79,6 +84,7 @@
             this.tbIdCode.Name = "tbIdCode";
             this.tbIdCode.Size = new System.Drawing.Size(219, 30);
             this.tbIdCode.TabIndex = 3;
+            this.tbIdCode.TextChanged += new System.EventHandler(this.tbIdCode_TextChanged);
             this.tbIdCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbIdCode_KeyUp);
             // 
             // lbCCCD
@@ -152,7 +158,8 @@
             // 
             // customerInfo
             // 
-            this.customerInfo.BackColor = System.Drawing.Color.Transparent;
+            this.customerInfo.BackColor = System.Drawing.Color.White;
+            this.customerInfo.Controls.Add(this.label3);
             this.customerInfo.Controls.Add(this.msgErrorIsNotNumber);
             this.customerInfo.Controls.Add(this.lbReturnDate);
             this.customerInfo.Controls.Add(this.returnDate);
@@ -228,10 +235,25 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(0, 241);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1166, 78);
             this.dataGridView1.TabIndex = 11;
@@ -269,11 +291,50 @@
             this.lbTotal.TabIndex = 14;
             this.lbTotal.Text = "0đ";
             // 
+            // payFirst
+            // 
+            this.payFirst.AutoSize = true;
+            this.payFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payFirst.Location = new System.Drawing.Point(64, 460);
+            this.payFirst.Name = "payFirst";
+            this.payFirst.Size = new System.Drawing.Size(181, 29);
+            this.payFirst.TabIndex = 15;
+            this.payFirst.TabStop = true;
+            this.payFirst.Text = "Thanh toán trước";
+            this.payFirst.UseVisualStyleBackColor = true;
+            // 
+            // payAfter
+            // 
+            this.payAfter.AutoSize = true;
+            this.payAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payAfter.Location = new System.Drawing.Point(64, 495);
+            this.payAfter.Name = "payAfter";
+            this.payAfter.Size = new System.Drawing.Size(170, 29);
+            this.payAfter.TabIndex = 16;
+            this.payAfter.TabStop = true;
+            this.payAfter.Text = "Thanh toán sau";
+            this.payAfter.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(636, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 16);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Trường này phải là số";
+            this.label3.Visible = false;
+            // 
             // frmBookingRoomDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1166, 626);
+            this.Controls.Add(this.payAfter);
+            this.Controls.Add(this.payFirst);
             this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConfirmBooking);
@@ -314,5 +375,8 @@
         private System.Windows.Forms.Button btnConfirmBooking;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTotal;
+        private System.Windows.Forms.RadioButton payFirst;
+        private System.Windows.Forms.RadioButton payAfter;
+        private System.Windows.Forms.Label label3;
     }
 }

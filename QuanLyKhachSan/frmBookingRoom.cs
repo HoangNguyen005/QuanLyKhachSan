@@ -192,5 +192,10 @@ namespace QuanLyKhachSan
             LoadDanhSachPhong(0, category, status, floor);
 
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+              
+        }
     }
 }

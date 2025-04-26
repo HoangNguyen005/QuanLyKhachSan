@@ -73,7 +73,7 @@ namespace QuanLyKhachSan
             mySqlConnection.Open();
             string sSql;
          
-                //tìm theo tên người liên lạc
+              
              sSql = $"SELECT * FROM Phong WHERE MaPhong = {Global.ROOM_CODE}";
             
             //truy vấn dữ liệu vào đối tượng SqlDataReader
@@ -90,6 +90,7 @@ namespace QuanLyKhachSan
 
         private void tbPhoneNumber_TextChanged(object sender, EventArgs e)
         {
+            //Check if phoneNumber field is NOT NUMBER
             Regex regex = new Regex("^[0-9]+$");
             if (!regex.IsMatch(tbPhoneNumber.Text))
             {
@@ -98,8 +99,6 @@ namespace QuanLyKhachSan
             else
             {
                 msgErrorIsNotNumber.Visible = false;
-
-
             }
 
         }
@@ -146,6 +145,20 @@ namespace QuanLyKhachSan
             float total = MONEY * totalDateBoking;
             //MessageBox.Show(total.ToString(), "thongad");
             lbTotal.Text = $"{total}đ";
+        }
+
+        private void tbIdCode_TextChanged(object sender, EventArgs e)
+        {
+            //Check if phoneNumber field is NOT NUMBER
+            Regex regex = new Regex("^[0-9]+$");
+            if (!regex.IsMatch(tbIdCode.Text))
+            {
+                label3.Visible = true;
+            }
+            else
+            {
+                label3.Visible = false;
+            }
         }
     }
 }
