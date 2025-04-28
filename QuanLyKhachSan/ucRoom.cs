@@ -34,7 +34,7 @@ namespace QuanLyKhachSan
                 if (value == "Trống")
                     this.BackColor = Color.Green;
                 else
-                    this.BackColor = Color.DimGray;
+                    this.BackColor = Color.FromArgb(64, 64, 64);
                
             }
         }

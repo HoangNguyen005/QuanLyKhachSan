@@ -41,6 +41,7 @@
             this.tbAddress = new System.Windows.Forms.TextBox();
             this.lbAddress = new System.Windows.Forms.Label();
             this.customerInfo = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.msgErrorIsNotNumber = new System.Windows.Forms.Label();
             this.lbReturnDate = new System.Windows.Forms.Label();
             this.returnDate = new System.Windows.Forms.DateTimePicker();
@@ -52,7 +53,6 @@
             this.lbTotal = new System.Windows.Forms.Label();
             this.payFirst = new System.Windows.Forms.RadioButton();
             this.payAfter = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
             this.customerInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -185,6 +185,18 @@
             this.customerInfo.TabStop = false;
             this.customerInfo.Text = "Thông tin khách hàng";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(636, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 16);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Trường này phải là số";
+            this.label3.Visible = false;
+            // 
             // msgErrorIsNotNumber
             // 
             this.msgErrorIsNotNumber.AutoSize = true;
@@ -261,7 +273,9 @@
             // btnConfirmBooking
             // 
             this.btnConfirmBooking.BackColor = System.Drawing.Color.DimGray;
+            this.btnConfirmBooking.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnConfirmBooking.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfirmBooking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmBooking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmBooking.ForeColor = System.Drawing.Color.White;
             this.btnConfirmBooking.Location = new System.Drawing.Point(905, 543);
@@ -314,18 +328,6 @@
             this.payAfter.TabStop = true;
             this.payAfter.Text = "Thanh toán sau";
             this.payAfter.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(636, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(157, 16);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Trường này phải là số";
-            this.label3.Visible = false;
             // 
             // frmBookingRoomDetail
             // 

@@ -40,38 +40,60 @@ namespace QuanLyKhachSan
            
         }
 
+        private void handleActive(object sender)
+        {
+            Button btn = sender as Button;
+            if(btn != null)
+            {
+                var location = currentActive.Location;
+                location.Y = btn.Location.Y;
+                currentActive.Location = location;
+            }
+        }
 
      
 
         private void btnHome_Click(object sender, EventArgs e)
         {
             //button1.BackColor += Color.Aqua;
+            handleActive(sender);
+
             openChild(new frmHome());
             
         }
      
         private void btnEmployee_Click(object sender, EventArgs e)
         {
+            handleActive(sender);
+
             openChild(new frmImployee());
         }
 
         private void btnBooking_Click(object sender, EventArgs e)
         {
+            handleActive(sender);
+
             openChild(new frmBookingRoom());
         }
 
         private void btnClient_Click(object sender, EventArgs e)
         {
+            handleActive(sender);
+
             openChild(new frmClient());
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            handleActive(sender);
+
             openChild(new frmPay());
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            handleActive(sender);
+
             openChild(new frmHome());
         }
 
@@ -88,6 +110,11 @@ namespace QuanLyKhachSan
 
         private void roomManage_Click(object sender, EventArgs e)
         {
+            handleActive(sender);
+            //Location
+
+            currentActive.BackColor = Color.Black;
+
             openChild(new frmRoomManage());
         }
     }

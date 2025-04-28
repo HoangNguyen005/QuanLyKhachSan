@@ -43,7 +43,7 @@ namespace QuanLyKhachSan
             drSuppliers.Close();
         }
 
-            //Enable field data
+        //Enable field data
         private void enable(bool enable)
         {
             if(enable)
@@ -56,7 +56,6 @@ namespace QuanLyKhachSan
                 cbNumberBed.Enabled = true;
                 utilities.ReadOnly = false;
                 cbFloor.Enabled = true;
-
                 utilities.BackColor = Color.WhiteSmoke;
             } else
             {
@@ -140,7 +139,25 @@ namespace QuanLyKhachSan
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            //DialogResult confirm = new DialogResult();
 
+            var confirm =  MessageBox.Show("Bạn chắc chắn muốn xóa phòng này!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm.ToString() != "yes")
+            {
+                return;
+            } else
+            {
+                try
+                {
+                    //Delete field
+                    
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
         }
     }
 }
