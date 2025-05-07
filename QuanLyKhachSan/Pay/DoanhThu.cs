@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyKhachSan
+namespace QuanLyKhachSan.Pay
 {
-    public partial class frmPay: Form
+    public partial class DoanhThu: Form
     {
-        public frmPay()
+        public DoanhThu()
         {
             InitializeComponent();
         }

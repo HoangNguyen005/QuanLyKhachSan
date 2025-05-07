@@ -30,7 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.currentActive = new System.Windows.Forms.Panel();
             this.roomManage = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.btnClient = new System.Windows.Forms.Button();
@@ -38,9 +40,7 @@
             this.btnRoomBook = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.panel_body = new System.Windows.Forms.Panel();
-            this.currentActive = new System.Windows.Forms.Panel();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,15 @@
             this.panel1.Size = new System.Drawing.Size(283, 746);
             this.panel1.TabIndex = 0;
             // 
+            // panel3
+            // 
+            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.Location = new System.Drawing.Point(26, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(198, 99);
+            this.panel3.TabIndex = 0;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.currentActive);
@@ -71,6 +80,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(283, 527);
             this.panel2.TabIndex = 0;
+            // 
+            // currentActive
+            // 
+            this.currentActive.BackColor = System.Drawing.Color.Maroon;
+            this.currentActive.Cursor = System.Windows.Forms.Cursors.Default;
+            this.currentActive.Location = new System.Drawing.Point(12, 60);
+            this.currentActive.Name = "currentActive";
+            this.currentActive.Size = new System.Drawing.Size(6, 49);
+            this.currentActive.TabIndex = 0;
             // 
             // roomManage
             // 
@@ -215,24 +233,6 @@
             this.panel_body.Size = new System.Drawing.Size(1050, 746);
             this.panel_body.TabIndex = 2;
             this.panel_body.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_body_Paint);
-            // 
-            // currentActive
-            // 
-            this.currentActive.BackColor = System.Drawing.Color.Maroon;
-            this.currentActive.Cursor = System.Windows.Forms.Cursors.Default;
-            this.currentActive.Location = new System.Drawing.Point(12, 60);
-            this.currentActive.Name = "currentActive";
-            this.currentActive.Size = new System.Drawing.Size(6, 49);
-            this.currentActive.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Location = new System.Drawing.Point(26, 12);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(198, 99);
-            this.panel3.TabIndex = 0;
             // 
             // frmMain
             // 

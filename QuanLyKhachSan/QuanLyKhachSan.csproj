@@ -48,8 +48,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -104,10 +110,22 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPay.cs">
+    <Compile Include="Pay\DoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPay.Designer.cs">
+    <Compile Include="Pay\DoanhThu.Designer.cs">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pay\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pay\frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pay\frmPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pay\frmPay.Designer.cs">
       <DependentUpon>frmPay.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRoomManage.cs">
@@ -124,6 +142,18 @@
     </Compile>
     <Compile Include="ucRoom.Designer.cs">
       <DependentUpon>ucRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pay\UsDichVuPay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pay\UsDichVuPay.Designer.cs">
+      <DependentUpon>UsDichVuPay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pay\UsPay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pay\UsPay.Designer.cs">
+      <DependentUpon>UsPay.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmBookingRoom.resx">
       <DependentUpon>frmBookingRoom.cs</DependentUpon>
@@ -146,7 +176,13 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPay.resx">
+    <EmbeddedResource Include="Pay\DoanhThu.resx">
+      <DependentUpon>DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pay\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pay\frmPay.resx">
       <DependentUpon>frmPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRoomManage.resx">
@@ -160,10 +196,18 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ucRoom.resx">
       <DependentUpon>ucRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pay\UsDichVuPay.resx">
+      <DependentUpon>UsDichVuPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pay\UsPay.resx">
+      <DependentUpon>UsPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -188,6 +232,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quet-the.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,5 +9,6 @@ namespace QuanLyKhachSan
     public static class Global
     {
         public static int ROOM_CODE = 100;
+        public static int MaDichVu = 100;
     }
 }

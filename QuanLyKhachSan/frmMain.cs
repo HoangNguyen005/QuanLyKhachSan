@@ -1,10 +1,12 @@
-﻿using System;
+﻿using QuanLyKhachSan.Pay;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -83,19 +85,59 @@ namespace QuanLyKhachSan
             openChild(new frmClient());
         }
 
-        private void btnPay_Click(object sender, EventArgs e)
+       /* private void btnPay_Click(object sender, EventArgs e)
         {
+
+            handleActive(sender);
+
+             openChild(new frmPay());
+
+            
+        }*/
+
+
+
+         private void frmMain_Load(object sender, EventArgs e)
+         {
+             handleActive(sender);
+
+             openChild(new frmHome());
+
+         }
+        private frmLoading loadingForm;
+        private async void btnPay_Click(object sender, EventArgs e)
+        {
+            loadingForm = new frmLoading();
+
+            // Show form loading trên UI thread
+            handleActive(sender);
+
+            openChild(loadingForm);
+
+            await Task.Run(() =>
+            {
+                // Giả lập xử lý lâu
+                Thread.Sleep(3000);
+
+                // Đóng form loading phải chạy trên UI thread
+                if (loadingForm.InvokeRequired)
+                {
+                    loadingForm.Invoke((MethodInvoker)delegate {
+                        loadingForm.Close();
+                    });
+                }
+                else
+                {
+                    loadingForm.Close();
+                }
+            });
+
+            // Sau khi loading xong, mở form thanh toán
             handleActive(sender);
 
             openChild(new frmPay());
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            handleActive(sender);
-
-            openChild(new frmHome());
-        }
 
         private void btnHome_MouseHover(object sender, EventArgs e)
         {
