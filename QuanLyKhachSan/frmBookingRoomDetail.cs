@@ -141,10 +141,10 @@ namespace QuanLyKhachSan
 
             }
   
-            float MONEY = float.Parse(dataGridView1.Rows[0].Cells[3].Value.ToString());
-            float total = MONEY * totalDateBoking;
+            //float MONEY = float.Parse(dataGridView1.Rows[0].Cells[3].Value.ToString());
+            //float total = MONEY * totalDateBoking;
             //MessageBox.Show(total.ToString(), "thongad");
-            lbTotal.Text = $"{total}đ";
+            lbTotal.Text = $"{float.Parse(dataGridView1.Rows[0].Cells[2].Value.ToString()) * totalDateBoking}d";
         }
 
         private void tbIdCode_TextChanged(object sender, EventArgs e)
@@ -159,6 +159,41 @@ namespace QuanLyKhachSan
             {
                 label3.Visible = false;
             }
+        }
+
+        //Handle booking room
+        private void btnConfirmBooking_Click(object sender, EventArgs e)
+        {
+            //Confirm Booking room
+            DialogResult result = new DialogResult();
+            result = MessageBox.Show("Chắc chắn muốn đặt phòng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.No)
+            {
+                return;
+            }
+
+            string query = "";
+            string roomCode = dataGridView1.Rows[0].Cells["MaPhong"].Value.ToString();
+                  
+            try
+            {
+                mySqlConnection = new SqlConnection(conStr);
+                mySqlConnection.Open();
+                query = $"exec bookingRoom {int.Parse(roomCode)}, '{customerName.Text}', '{tbPhoneNumber.Text}', '{tbIdCode.Text}', '{lbAddress.Text}', '{lbNationality.Text}', NULL, '{bookingDate.Value}', '{returnDate.Value}'";
+                mySqlCommand = new SqlCommand(query, mySqlConnection);
+                mySqlCommand.ExecuteReader();
+
+                MessageBox.Show("Đặt phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

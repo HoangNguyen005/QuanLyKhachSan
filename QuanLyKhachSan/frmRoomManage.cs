@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Reflection.Emit;
+using System.Text.RegularExpressions;
 
 namespace QuanLyKhachSan
 {
     public partial class frmRoomManage: Form
     {
+        private string btnActive = "";
 
         //khai báo xâu kết nối tới CSDL
         private string conStr = "Data Source=(local);Initial Catalog=QuanLyKhachSan;Integrated Security=True";
@@ -50,7 +53,7 @@ namespace QuanLyKhachSan
             {
                 tbRoomId.ReadOnly = false;
                 cbCategoryRoom.Enabled = true;
-                tbNumberPeople.ReadOnly = false;
+            
                 tbRoomPrice.ReadOnly = false;
                 tbArea.ReadOnly = false;
                 cbNumberBed.Enabled = true;
@@ -61,7 +64,7 @@ namespace QuanLyKhachSan
             {
                 tbRoomId.ReadOnly = true;
                 cbCategoryRoom.Enabled = false;
-                tbNumberPeople.ReadOnly = true;
+         
                 tbRoomPrice.ReadOnly = true;
                 tbArea.ReadOnly = true;
                 cbNumberBed.Enabled = false;
@@ -71,10 +74,7 @@ namespace QuanLyKhachSan
             }
         }
 
-        private void unEnable()
-        {
 
-        }
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -95,18 +95,19 @@ namespace QuanLyKhachSan
         {
             enable(false);
             int r = e.RowIndex;
-            tbRoomId.Text = dataGridView1.Rows[r].Cells[0].Value.ToString();
-            cbCategoryRoom.Text = dataGridView1.Rows[r].Cells[1].Value.ToString();
-            tbNumberPeople.Text = dataGridView1.Rows[r].Cells[2].Value.ToString();
-            tbRoomPrice.Text = dataGridView1.Rows[r].Cells[3].Value.ToString();
-            tbArea.Text = dataGridView1.Rows[r].Cells[5].Value.ToString();
-            cbNumberBed.Text = dataGridView1.Rows[r].Cells[6].Value.ToString();
-            utilities.Text = dataGridView1.Rows[r].Cells[7].Value.ToString();
-            cbFloor.Text = dataGridView1.Rows[r].Cells[8].Value.ToString();
+            tbRoomId.Text = dataGridView1.Rows[r].Cells["MaPhong"].Value.ToString();
+            cbCategoryRoom.Text = dataGridView1.Rows[r].Cells["LoaiPhong"].Value.ToString();
+            
+            tbRoomPrice.Text = dataGridView1.Rows[r].Cells["GiaPhong"].Value.ToString();
+            tbArea.Text = dataGridView1.Rows[r].Cells["DienTich"].Value.ToString();
+            cbNumberBed.Text = dataGridView1.Rows[r].Cells["SoGiuong"].Value.ToString();
+            utilities.Text = dataGridView1.Rows[r].Cells["MoTa"].Value.ToString();
+            cbFloor.Text = dataGridView1.Rows[r].Cells["Tang"].Value.ToString();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            btnActive = "update";
             enable(true);
         }
 
@@ -114,15 +115,21 @@ namespace QuanLyKhachSan
         {
             try
             {
-                int roomId = int.Parse(tbRoomId.Text);
-                string categoryRoom = cbCategoryRoom.Text;
-                mySqlConnection = new SqlConnection(conStr);
-                mySqlConnection.Open();
-                string query = $"exec updateRoom {roomId}, N'{categoryRoom}', {tbNumberPeople.Text}, {tbRoomPrice.Text}, {tbArea.Text}, {cbNumberBed.Text}, N'{utilities.Text}', {cbFloor.Text}";
-                mySqlCommand = new SqlCommand(query, mySqlConnection);
-                mySqlCommand.ExecuteReader();
-                MessageBox.Show("Chỉnh sửa dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                displayData();
+                if (btnActive == "update")
+                {
+                    int roomId = int.Parse(tbRoomId.Text);
+                    string categoryRoom = cbCategoryRoom.Text;
+                    mySqlConnection = new SqlConnection(conStr);
+                    mySqlConnection.Open();
+                    string query = $"exec updateRoom {roomId}, N'{categoryRoom}', {tbRoomPrice.Text}, {tbArea.Text}, {cbNumberBed.Text}, N'{utilities.Text}', {cbFloor.Text}";
+                    mySqlCommand = new SqlCommand(query, mySqlConnection);
+                    mySqlCommand.ExecuteReader();
+                    MessageBox.Show("Chỉnh sửa dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    displayData();
+                } else
+                {
+                    //Create new room
+                }
               
             }
             catch (Exception exception)
@@ -137,12 +144,13 @@ namespace QuanLyKhachSan
 
         }
 
+        //Delete room
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //DialogResult confirm = new DialogResult();
+            DialogResult confirm = new DialogResult();
 
-            var confirm =  MessageBox.Show("Bạn chắc chắn muốn xóa phòng này!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirm.ToString() != "yes")
+            confirm =  MessageBox.Show("Bạn chắc chắn muốn xóa phòng này!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.No)
             {
                 return;
             } else
@@ -150,7 +158,13 @@ namespace QuanLyKhachSan
                 try
                 {
                     //Delete field
-                    
+                    mySqlConnection = new SqlConnection(conStr); 
+                    mySqlConnection.Open();
+                    string query = $"exec deleteRoom {int.Parse(tbRoomId.Text.Trim())}";
+                    mySqlCommand = new SqlCommand(query, mySqlConnection);
+                    mySqlCommand.ExecuteReader();
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    displayData();
                 }
                 catch (Exception exception)
                 {
@@ -158,6 +172,39 @@ namespace QuanLyKhachSan
                     return;
                 }
             }
+        }
+
+        private void tbArea_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex("^[0-9\\.]+$");
+            if (!regex.IsMatch(tbArea.Text))
+            {
+                //label3.Visible = true;
+            }
+            else
+            {
+                //label3.Visible = false;
+            }
+        }
+
+        private void numberPeople_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbnAdd_Click(object sender, EventArgs e)
+        {
+            //Change state button
+            btnActive = "add";
+            enable(true);
+            tbRoomId.Clear();
+            tbRoomId.ReadOnly = true;
+            cbCategoryRoom.SelectedItem = null;       
+            tbRoomPrice.Clear();
+            tbArea.Clear();
+            cbNumberBed.SelectedItem = null;
+            utilities.Clear();
+            cbFloor.SelectedItem = null;
         }
     }
 }

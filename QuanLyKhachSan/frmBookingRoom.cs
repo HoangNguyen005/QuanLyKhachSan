@@ -39,54 +39,18 @@ namespace QuanLyKhachSan
 
             if (category == "" && status == "" && floor == "")
             {
-                query = "SELECT * FROM Phong";
+                query = "SELECT dbo.Phong.*, dbo.TrangThaiPhong.TrangThai\r\nFROM     dbo.Phong INNER JOIN\r\n                  dbo.TrangThaiPhong ON dbo.Phong.MaPhong = dbo.TrangThaiPhong.MaPhong";
             }
             if (category != "" || status != "" || floor != "")
             {
-                query = $"SELECT * FROM Phong WHERE LoaiPhong LIKE  N'%{category}' AND TrangThai LIKE N'%{status}' AND Tang LIKE '%{floor}'";
+                query = $"SELECT dbo.Phong.*, dbo.TrangThaiPhong.TrangThai\r\nFROM     dbo.Phong INNER JOIN\r\n                  dbo.TrangThaiPhong ON dbo.Phong.MaPhong = dbo.TrangThaiPhong.MaPhong WHERE LoaiPhong LIKE  N'%{category}' AND TrangThai LIKE N'%{status}' AND Tang LIKE '%{floor}'";
             }
 
             if (roomNumber != 0)
             {
                 query = $"SELECT * FROM Phong WHERE MaPhong = {roomNumber}";
             }
-            //if (category != "" && status == "")
-            //{
-            //    query = $"SELECT * FROM Phong WHERE LoaiPhong = N'{category}'";
-            //}
-            //if (category == "" && status != "")
-            //{
-            //    query = $"SELECT * FROM Phong WHERE TrangThai = N'{status}'";
-            //}
-            //if (category == "" && status == "" && floor != 0)
-            //{
-            //    query = $"SELECT * FROM Phong WHERE Tang = {floor}";
-
-            //}
-
-            //if (category == "")
-            //{
-            //    if (status == "")
-            //    {
-            //        if (floor == 0)
-            //        {
-            //            query = $"SELECT * FROM Phong";
-            //        }
-            //        else
-            //        {
-            //            query = $"SELECT * FROM Phong WHERE Tang = {floor}" ;
-            //        }
-            //    } 
-            //    else
-            //    {
-            //        query = $"SELECT * FROM Phong WHERE TrangThai = N'{status}' AND Tang = {floor}" ;
-            //    }
-            //} 
-            //else
-            //{
-            //    query = $"SELECT * FROM Phong WHERE LoaiPhong = N'{category}' AND TrangThai = N'{status}' AND Tang = {floor}" ;
-            //}
-
+           
 
             using (SqlConnection conn = new SqlConnection(conStr))
                 {
@@ -95,14 +59,7 @@ namespace QuanLyKhachSan
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     flowLayoutPanel1.Controls.Clear();
-                    //if(!reader.Read())
-                    //{
-                    //    MessageBox.Show("Không có dữ liệu tương ứng", "Thông báo");
-                    //    tbSearchRoomNumber.Clear();
-
-                    //    LoadDanhSachPhong();
-                    //    return;
-                    //}
+               
                     while (reader.Read())
                     {
                         var uc = new ucRoom();
@@ -112,6 +69,7 @@ namespace QuanLyKhachSan
 
                         flowLayoutPanel1.Controls.Add(uc);
                     }
+               
                 }
         }
 

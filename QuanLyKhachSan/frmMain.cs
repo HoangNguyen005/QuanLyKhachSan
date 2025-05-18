@@ -117,7 +117,7 @@ namespace QuanLyKhachSan
             await Task.Run(() =>
             {
                 // Giả lập xử lý lâu
-                Thread.Sleep(3000);
+                //Thread.Sleep(3000);
 
                 // Đóng form loading phải chạy trên UI thread
                 if (loadingForm.InvokeRequired)

@@ -32,8 +32,6 @@
             this.roomCategory = new System.Windows.Forms.Label();
             this.cbCategoryRoom = new System.Windows.Forms.ComboBox();
             this.priceRoom = new System.Windows.Forms.Label();
-            this.numberPeople = new System.Windows.Forms.Label();
-            this.tbNumberPeople = new System.Windows.Forms.TextBox();
             this.tbRoomPrice = new System.Windows.Forms.TextBox();
             this.lbS = new System.Windows.Forms.Label();
             this.lbUtilities = new System.Windows.Forms.Label();
@@ -96,7 +94,8 @@
             this.cbCategoryRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategoryRoom.FormattingEnabled = true;
             this.cbCategoryRoom.Items.AddRange(new object[] {
-            "Phòng thường",
+            "Phòng đơn",
+            "Phòng đôi",
             "Phòng VIP"});
             this.cbCategoryRoom.Location = new System.Drawing.Point(159, 71);
             this.cbCategoryRoom.Name = "cbCategoryRoom";
@@ -107,37 +106,17 @@
             // 
             this.priceRoom.AutoSize = true;
             this.priceRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceRoom.Location = new System.Drawing.Point(33, 166);
+            this.priceRoom.Location = new System.Drawing.Point(31, 120);
             this.priceRoom.Name = "priceRoom";
             this.priceRoom.Size = new System.Drawing.Size(108, 25);
             this.priceRoom.TabIndex = 3;
             this.priceRoom.Text = "Giá phòng:";
             // 
-            // numberPeople
-            // 
-            this.numberPeople.AutoSize = true;
-            this.numberPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberPeople.Location = new System.Drawing.Point(33, 120);
-            this.numberPeople.Name = "numberPeople";
-            this.numberPeople.Size = new System.Drawing.Size(96, 25);
-            this.numberPeople.TabIndex = 4;
-            this.numberPeople.Text = "Số người:";
-            // 
-            // tbNumberPeople
-            // 
-            this.tbNumberPeople.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbNumberPeople.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNumberPeople.Location = new System.Drawing.Point(159, 120);
-            this.tbNumberPeople.Name = "tbNumberPeople";
-            this.tbNumberPeople.ReadOnly = true;
-            this.tbNumberPeople.Size = new System.Drawing.Size(309, 30);
-            this.tbNumberPeople.TabIndex = 5;
-            // 
             // tbRoomPrice
             // 
             this.tbRoomPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbRoomPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRoomPrice.Location = new System.Drawing.Point(159, 166);
+            this.tbRoomPrice.Location = new System.Drawing.Point(159, 123);
             this.tbRoomPrice.Name = "tbRoomPrice";
             this.tbRoomPrice.ReadOnly = true;
             this.tbRoomPrice.Size = new System.Drawing.Size(309, 30);
@@ -147,7 +126,7 @@
             // 
             this.lbS.AutoSize = true;
             this.lbS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbS.Location = new System.Drawing.Point(33, 212);
+            this.lbS.Location = new System.Drawing.Point(33, 173);
             this.lbS.Name = "lbS";
             this.lbS.Size = new System.Drawing.Size(93, 25);
             this.lbS.TabIndex = 7;
@@ -157,7 +136,7 @@
             // 
             this.lbUtilities.AutoSize = true;
             this.lbUtilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUtilities.Location = new System.Drawing.Point(606, 120);
+            this.lbUtilities.Location = new System.Drawing.Point(583, 120);
             this.lbUtilities.Name = "lbUtilities";
             this.lbUtilities.Size = new System.Drawing.Size(87, 25);
             this.lbUtilities.TabIndex = 8;
@@ -167,7 +146,7 @@
             // 
             this.floor.AutoSize = true;
             this.floor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.floor.Location = new System.Drawing.Point(606, 25);
+            this.floor.Location = new System.Drawing.Point(583, 25);
             this.floor.Name = "floor";
             this.floor.Size = new System.Drawing.Size(64, 25);
             this.floor.TabIndex = 9;
@@ -177,7 +156,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(606, 74);
+            this.label4.Location = new System.Drawing.Point(583, 74);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 25);
             this.label4.TabIndex = 10;
@@ -188,11 +167,12 @@
             // 
             this.tbArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbArea.Location = new System.Drawing.Point(159, 212);
+            this.tbArea.Location = new System.Drawing.Point(159, 173);
             this.tbArea.Name = "tbArea";
             this.tbArea.ReadOnly = true;
-            this.tbArea.Size = new System.Drawing.Size(309, 30);
+            this.tbArea.Size = new System.Drawing.Size(96, 30);
             this.tbArea.TabIndex = 11;
+            this.tbArea.TextChanged += new System.EventHandler(this.tbArea_TextChanged);
             // 
             // cbFloor
             // 
@@ -211,7 +191,7 @@
             "8",
             "9",
             "10"});
-            this.cbFloor.Location = new System.Drawing.Point(732, 25);
+            this.cbFloor.Location = new System.Drawing.Point(709, 25);
             this.cbFloor.Name = "cbFloor";
             this.cbFloor.Size = new System.Drawing.Size(309, 33);
             this.cbFloor.TabIndex = 12;
@@ -228,7 +208,7 @@
             "2",
             "3",
             "4"});
-            this.cbNumberBed.Location = new System.Drawing.Point(732, 74);
+            this.cbNumberBed.Location = new System.Drawing.Point(709, 74);
             this.cbNumberBed.Name = "cbNumberBed";
             this.cbNumberBed.Size = new System.Drawing.Size(309, 33);
             this.cbNumberBed.TabIndex = 13;
@@ -238,10 +218,10 @@
             this.utilities.BackColor = System.Drawing.SystemColors.ControlLight;
             this.utilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.utilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.utilities.Location = new System.Drawing.Point(732, 123);
+            this.utilities.Location = new System.Drawing.Point(709, 123);
             this.utilities.Name = "utilities";
             this.utilities.ReadOnly = true;
-            this.utilities.Size = new System.Drawing.Size(309, 119);
+            this.utilities.Size = new System.Drawing.Size(309, 80);
             this.utilities.TabIndex = 15;
             this.utilities.Text = "";
             // 
@@ -251,12 +231,13 @@
             this.tbnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbnAdd.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbnAdd.Location = new System.Drawing.Point(203, 260);
+            this.tbnAdd.Location = new System.Drawing.Point(196, 249);
             this.tbnAdd.Name = "tbnAdd";
             this.tbnAdd.Size = new System.Drawing.Size(100, 41);
             this.tbnAdd.TabIndex = 16;
             this.tbnAdd.Text = "Thêm";
             this.tbnAdd.UseVisualStyleBackColor = false;
+            this.tbnAdd.Click += new System.EventHandler(this.tbnAdd_Click);
             // 
             // btnDelete
             // 
@@ -264,7 +245,7 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDelete.Location = new System.Drawing.Point(481, 260);
+            this.btnDelete.Location = new System.Drawing.Point(474, 249);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 41);
             this.btnDelete.TabIndex = 17;
@@ -278,7 +259,7 @@
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUpdate.Location = new System.Drawing.Point(339, 260);
+            this.btnUpdate.Location = new System.Drawing.Point(332, 249);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 41);
             this.btnUpdate.TabIndex = 18;
@@ -292,7 +273,7 @@
             this.btnRecord.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecord.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRecord.Location = new System.Drawing.Point(620, 260);
+            this.btnRecord.Location = new System.Drawing.Point(613, 249);
             this.btnRecord.Name = "btnRecord";
             this.btnRecord.Size = new System.Drawing.Size(100, 41);
             this.btnRecord.TabIndex = 19;
@@ -306,7 +287,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCancel.Location = new System.Drawing.Point(766, 260);
+            this.btnCancel.Location = new System.Drawing.Point(759, 249);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 41);
             this.btnCancel.TabIndex = 20;
@@ -438,8 +419,6 @@
             this.Controls.Add(this.lbUtilities);
             this.Controls.Add(this.lbS);
             this.Controls.Add(this.tbRoomPrice);
-            this.Controls.Add(this.tbNumberPeople);
-            this.Controls.Add(this.numberPeople);
             this.Controls.Add(this.priceRoom);
             this.Controls.Add(this.cbCategoryRoom);
             this.Controls.Add(this.roomCategory);
@@ -464,8 +443,6 @@
         private System.Windows.Forms.Label roomCategory;
         private System.Windows.Forms.ComboBox cbCategoryRoom;
         private System.Windows.Forms.Label priceRoom;
-        private System.Windows.Forms.Label numberPeople;
-        private System.Windows.Forms.TextBox tbNumberPeople;
         private System.Windows.Forms.TextBox tbRoomPrice;
         private System.Windows.Forms.Label lbS;
         private System.Windows.Forms.Label lbUtilities;

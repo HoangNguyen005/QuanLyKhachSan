@@ -51,8 +51,6 @@
             this.btnConfirmBooking = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
-            this.payFirst = new System.Windows.Forms.RadioButton();
-            this.payAfter = new System.Windows.Forms.RadioButton();
             this.customerInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -269,6 +267,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1166, 78);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnConfirmBooking
             // 
@@ -284,6 +283,7 @@
             this.btnConfirmBooking.TabIndex = 12;
             this.btnConfirmBooking.Text = "Xác nhận đặt phòng";
             this.btnConfirmBooking.UseVisualStyleBackColor = false;
+            this.btnConfirmBooking.Click += new System.EventHandler(this.btnConfirmBooking_Click);
             // 
             // label1
             // 
@@ -305,38 +305,12 @@
             this.lbTotal.TabIndex = 14;
             this.lbTotal.Text = "0đ";
             // 
-            // payFirst
-            // 
-            this.payFirst.AutoSize = true;
-            this.payFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payFirst.Location = new System.Drawing.Point(64, 460);
-            this.payFirst.Name = "payFirst";
-            this.payFirst.Size = new System.Drawing.Size(181, 29);
-            this.payFirst.TabIndex = 15;
-            this.payFirst.TabStop = true;
-            this.payFirst.Text = "Thanh toán trước";
-            this.payFirst.UseVisualStyleBackColor = true;
-            // 
-            // payAfter
-            // 
-            this.payAfter.AutoSize = true;
-            this.payAfter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payAfter.Location = new System.Drawing.Point(64, 495);
-            this.payAfter.Name = "payAfter";
-            this.payAfter.Size = new System.Drawing.Size(170, 29);
-            this.payAfter.TabIndex = 16;
-            this.payAfter.TabStop = true;
-            this.payAfter.Text = "Thanh toán sau";
-            this.payAfter.UseVisualStyleBackColor = true;
-            // 
             // frmBookingRoomDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1166, 626);
-            this.Controls.Add(this.payAfter);
-            this.Controls.Add(this.payFirst);
             this.Controls.Add(this.lbTotal);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConfirmBooking);
@@ -377,8 +351,6 @@
         private System.Windows.Forms.Button btnConfirmBooking;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTotal;
-        private System.Windows.Forms.RadioButton payFirst;
-        private System.Windows.Forms.RadioButton payAfter;
         private System.Windows.Forms.Label label3;
     }
 }
