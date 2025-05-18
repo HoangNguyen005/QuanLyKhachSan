@@ -55,6 +55,10 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.lbRoomId = new System.Windows.Forms.Label();
             this.tbRoomId = new System.Windows.Forms.TextBox();
+            this.roomStatus = new System.Windows.Forms.Label();
+            this.cbRoomStatus = new System.Windows.Forms.ComboBox();
+            this.tbDescribe = new System.Windows.Forms.RichTextBox();
+            this.describe = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,12 +70,12 @@
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 481);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 514);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1062, 287);
+            this.dataGridView1.Size = new System.Drawing.Size(1062, 254);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
@@ -170,7 +174,7 @@
             this.tbArea.Location = new System.Drawing.Point(159, 173);
             this.tbArea.Name = "tbArea";
             this.tbArea.ReadOnly = true;
-            this.tbArea.Size = new System.Drawing.Size(96, 30);
+            this.tbArea.Size = new System.Drawing.Size(309, 30);
             this.tbArea.TabIndex = 11;
             this.tbArea.TextChanged += new System.EventHandler(this.tbArea_TextChanged);
             // 
@@ -221,7 +225,7 @@
             this.utilities.Location = new System.Drawing.Point(709, 123);
             this.utilities.Name = "utilities";
             this.utilities.ReadOnly = true;
-            this.utilities.Size = new System.Drawing.Size(309, 80);
+            this.utilities.Size = new System.Drawing.Size(309, 59);
             this.utilities.TabIndex = 15;
             this.utilities.Text = "";
             // 
@@ -231,7 +235,7 @@
             this.tbnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbnAdd.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbnAdd.Location = new System.Drawing.Point(196, 249);
+            this.tbnAdd.Location = new System.Drawing.Point(201, 291);
             this.tbnAdd.Name = "tbnAdd";
             this.tbnAdd.Size = new System.Drawing.Size(100, 41);
             this.tbnAdd.TabIndex = 16;
@@ -245,7 +249,7 @@
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDelete.Location = new System.Drawing.Point(474, 249);
+            this.btnDelete.Location = new System.Drawing.Point(479, 291);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 41);
             this.btnDelete.TabIndex = 17;
@@ -259,7 +263,7 @@
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnUpdate.Location = new System.Drawing.Point(332, 249);
+            this.btnUpdate.Location = new System.Drawing.Point(337, 291);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 41);
             this.btnUpdate.TabIndex = 18;
@@ -273,7 +277,7 @@
             this.btnRecord.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecord.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnRecord.Location = new System.Drawing.Point(613, 249);
+            this.btnRecord.Location = new System.Drawing.Point(618, 291);
             this.btnRecord.Name = "btnRecord";
             this.btnRecord.Size = new System.Drawing.Size(100, 41);
             this.btnRecord.TabIndex = 19;
@@ -287,7 +291,7 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnCancel.Location = new System.Drawing.Point(759, 249);
+            this.btnCancel.Location = new System.Drawing.Point(764, 291);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 41);
             this.btnCancel.TabIndex = 20;
@@ -301,7 +305,7 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(61, 323);
+            this.groupBox1.Location = new System.Drawing.Point(61, 363);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(957, 118);
             this.groupBox1.TabIndex = 21;
@@ -340,6 +344,7 @@
             this.btnSearch.TabIndex = 22;
             this.btnSearch.Text = "Tìm kiếm";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // radioButton3
             // 
@@ -395,6 +400,52 @@
             this.tbRoomId.Size = new System.Drawing.Size(309, 30);
             this.tbRoomId.TabIndex = 23;
             // 
+            // roomStatus
+            // 
+            this.roomStatus.AutoSize = true;
+            this.roomStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomStatus.Location = new System.Drawing.Point(33, 222);
+            this.roomStatus.Name = "roomStatus";
+            this.roomStatus.Size = new System.Drawing.Size(106, 25);
+            this.roomStatus.TabIndex = 24;
+            this.roomStatus.Text = "Tình trạng:";
+            // 
+            // cbRoomStatus
+            // 
+            this.cbRoomStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbRoomStatus.Enabled = false;
+            this.cbRoomStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbRoomStatus.FormattingEnabled = true;
+            this.cbRoomStatus.Items.AddRange(new object[] {
+            "Bình thường",
+            "Đang sửa chữa"});
+            this.cbRoomStatus.Location = new System.Drawing.Point(159, 222);
+            this.cbRoomStatus.Name = "cbRoomStatus";
+            this.cbRoomStatus.Size = new System.Drawing.Size(309, 33);
+            this.cbRoomStatus.TabIndex = 25;
+            // 
+            // tbDescribe
+            // 
+            this.tbDescribe.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tbDescribe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDescribe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescribe.Location = new System.Drawing.Point(709, 204);
+            this.tbDescribe.Name = "tbDescribe";
+            this.tbDescribe.ReadOnly = true;
+            this.tbDescribe.Size = new System.Drawing.Size(309, 64);
+            this.tbDescribe.TabIndex = 27;
+            this.tbDescribe.Text = "";
+            // 
+            // describe
+            // 
+            this.describe.AutoSize = true;
+            this.describe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.describe.Location = new System.Drawing.Point(583, 204);
+            this.describe.Name = "describe";
+            this.describe.Size = new System.Drawing.Size(67, 25);
+            this.describe.TabIndex = 26;
+            this.describe.Text = "Mô tả:";
+            // 
             // frmRoomManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -402,6 +453,10 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1062, 768);
+            this.Controls.Add(this.tbDescribe);
+            this.Controls.Add(this.describe);
+            this.Controls.Add(this.cbRoomStatus);
+            this.Controls.Add(this.roomStatus);
             this.Controls.Add(this.tbRoomId);
             this.Controls.Add(this.lbRoomId);
             this.Controls.Add(this.groupBox1);
@@ -466,5 +521,9 @@
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Label lbRoomId;
         private System.Windows.Forms.TextBox tbRoomId;
+        private System.Windows.Forms.Label roomStatus;
+        private System.Windows.Forms.ComboBox cbRoomStatus;
+        private System.Windows.Forms.RichTextBox tbDescribe;
+        private System.Windows.Forms.Label describe;
     }
 }

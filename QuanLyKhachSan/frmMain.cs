@@ -155,7 +155,7 @@ namespace QuanLyKhachSan
             handleActive(sender);
             //Location
 
-            currentActive.BackColor = Color.Black;
+            //currentActive.BackColor = Color.Black;
 
             openChild(new frmRoomManage());
         }
