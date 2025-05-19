@@ -179,7 +179,7 @@ namespace QuanLyKhachSan
             {
                 mySqlConnection = new SqlConnection(conStr);
                 mySqlConnection.Open();
-                query = $"exec bookingRoom {int.Parse(roomCode)}, '{customerName.Text}', '{tbPhoneNumber.Text}', '{tbIdCode.Text}', '{lbAddress.Text}', '{lbNationality.Text}', NULL, '{bookingDate.Value}', '{returnDate.Value}'";
+                query = $"exec bookingRoom {int.Parse(roomCode)}, '{customerName.Text}', '{tbPhoneNumber.Text}', '{tbIdCode.Text}', '{tbAddress.Text}', '{tbNationality.Text}', NULL, '{bookingDate.Value}', '{returnDate.Value}'";
                 mySqlCommand = new SqlCommand(query, mySqlConnection);
                 mySqlCommand.ExecuteReader();
 
