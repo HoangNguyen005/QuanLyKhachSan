@@ -258,6 +258,7 @@
             this.phoneNumber.ReadOnly = true;
             this.phoneNumber.Size = new System.Drawing.Size(257, 30);
             this.phoneNumber.TabIndex = 43;
+            this.phoneNumber.TextChanged += new System.EventHandler(this.phoneNumber_TextChanged);
             // 
             // customeID
             // 
@@ -267,6 +268,7 @@
             this.customeID.ReadOnly = true;
             this.customeID.Size = new System.Drawing.Size(257, 30);
             this.customeID.TabIndex = 44;
+            this.customeID.TextChanged += new System.EventHandler(this.customeID_TextChanged);
             // 
             // roomNumber
             // 

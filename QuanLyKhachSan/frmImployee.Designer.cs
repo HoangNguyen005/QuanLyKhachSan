@@ -287,6 +287,7 @@
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(238, 26);
             this.txtSoDienThoai.TabIndex = 13;
+            this.txtSoDienThoai.TextChanged += new System.EventHandler(this.txtSoDienThoai_TextChanged);
             // 
             // txtGmail
             // 

@@ -28,14 +28,17 @@ namespace QuanLyKhachSan
             InitializeComponent();
         }
 
-        private void displayData()
+        private void displayData(string query = "")
         {
             mySqlConnection = new SqlConnection(conStr);
             mySqlConnection.Open();
-            string sSql = "SELECT * FROM Phong";
-       
+
+            if (query == "")
+                query = "SELECT * FROM Phong";
+          
+
             //truy vấn dữ liệu vào đối tượng SqlDataReader
-            mySqlCommand = new SqlCommand(sSql, mySqlConnection);
+            mySqlCommand = new SqlCommand(query, mySqlConnection);
             SqlDataReader drSuppliers = mySqlCommand.ExecuteReader();
             //chuyển dữ liệu từ đối tượng SqlDataReader sang DataTable để hiển thị lên lưới
             DataTable dtSupplier = new DataTable();
@@ -229,7 +232,16 @@ namespace QuanLyKhachSan
         // Handle search
         private void btnSearch_Click(object sender, EventArgs e)
         {
-
+            string query = "";
+            if (rBtnCategoryRoom.Checked)
+            {
+                query = $"select * from Phong where Phong.LoaiPhong LIKE N'%{tbSearch.Text.Trim()}%'";
+            }
+            else if (rBtnRoomNumber.Checked)
+            {
+                query = $"select * from Phong where Phong.MaPhong LIKE N'%{tbSearch.Text.Trim()}%'";
+            }
+            displayData(query);
         }
     }
 }

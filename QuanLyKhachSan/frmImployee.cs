@@ -399,5 +399,10 @@ namespace Myproject1
                 mySqlConnection.Close();
             }
         }
+
+        private void txtSoDienThoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

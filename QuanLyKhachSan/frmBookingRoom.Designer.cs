@@ -39,6 +39,7 @@
             this.lbFloor = new System.Windows.Forms.Label();
             this.cbFloor = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnShowAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -87,7 +88,8 @@
             this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Items.AddRange(new object[] {
-            "Phòng thường",
+            "Phòng đơn",
+            "Phòng đôi",
             "Phòng VIP"});
             this.cbCategory.Location = new System.Drawing.Point(188, 102);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -184,12 +186,29 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Danh sách phòng";
             // 
+            // btnShowAll
+            // 
+            this.btnShowAll.BackColor = System.Drawing.Color.DimGray;
+            this.btnShowAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowAll.ForeColor = System.Drawing.Color.White;
+            this.btnShowAll.Location = new System.Drawing.Point(485, 102);
+            this.btnShowAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowAll.Name = "btnShowAll";
+            this.btnShowAll.Size = new System.Drawing.Size(121, 33);
+            this.btnShowAll.TabIndex = 13;
+            this.btnShowAll.Text = "Tất cả";
+            this.btnShowAll.UseVisualStyleBackColor = false;
+            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
+            // 
             // frmBookingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(992, 673);
+            this.Controls.Add(this.btnShowAll);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbFloor);
             this.Controls.Add(this.cbFloor);
@@ -222,5 +241,6 @@
         private System.Windows.Forms.Label lbFloor;
         private System.Windows.Forms.ComboBox cbFloor;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnShowAll;
     }
 }

@@ -155,5 +155,10 @@ namespace QuanLyKhachSan
         {
               
         }
+
+        private void btnShowAll_Click(object sender, EventArgs e)
+        {
+            LoadDanhSachPhong();
+        }
     }
 }

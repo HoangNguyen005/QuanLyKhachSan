@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -236,7 +237,24 @@ namespace QuanLyKhachSan
             if (e.KeyValue == 13)
             {
               
+            }
+        }
 
+        private void phoneNumber_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex("^[0-9]+$");
+            if (!regex.IsMatch(phoneNumber.Text))
+            {
+                MessageBox.Show("Trường này phải là số!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void customeID_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex("^[0-9]+$");
+            if (!regex.IsMatch(customeID.Text))
+            {
+                MessageBox.Show("Trường này phải là số!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
