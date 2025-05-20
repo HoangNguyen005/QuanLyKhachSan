@@ -24,20 +24,25 @@ namespace QuanLyKhachSan
         private SqlCommand mySqlCommand;
 
         private string cusID = "";
+        private string currentActive = "";
 
         public frmClient()
         {
             InitializeComponent();
         }
 
-        private void loadData()
+        private void loadData(string query = "")
         {
             mySqlConnection = new SqlConnection(conStr);
             mySqlConnection.Open();
-            string sSql = "SELECT * FROM KhachHang";
+            if (query == "")
+            {
+                query = "SELECT * FROM KhachHang";
+
+            }
 
             //truy vấn dữ liệu vào đối tượng SqlDataReader
-            mySqlCommand = new SqlCommand(sSql, mySqlConnection);
+            mySqlCommand = new SqlCommand(query, mySqlConnection);
             SqlDataReader drSuppliers = mySqlCommand.ExecuteReader();
             //chuyển dữ liệu từ đối tượng SqlDataReader sang DataTable để hiển thị lên lưới
             DataTable dtSupplier = new DataTable();
@@ -46,11 +51,34 @@ namespace QuanLyKhachSan
             dataGridView1.DataSource = dtSupplier;
             //đóng đối tượng DataReader
             drSuppliers.Close();
+            //mySqlConnection.Close();
+        }
+
+        private void enable(bool result)
+        {
+            if(result)
+            {
+                customeName.ReadOnly = false;
+                phoneNumber.ReadOnly = false;
+                customeID.ReadOnly = false;
+                roomNumber.ReadOnly = false;
+                nationality.ReadOnly = false;
+                address.ReadOnly = false;
+            } else
+            {
+                customeName.ReadOnly = true;
+                phoneNumber.ReadOnly = true;
+                customeID.ReadOnly = true;
+                roomNumber.ReadOnly = true;
+                nationality.ReadOnly = true;
+                address.ReadOnly = true;
+            }
         }
 
         private void frmClient_Load(object sender, EventArgs e)
         {
             // Gọi hàm load khách hàng khi form mở
+            rdBtnName.Checked = true;
             loadData();
         }
 
@@ -88,32 +116,7 @@ namespace QuanLyKhachSan
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    using (SqlConnection conn = new SqlConnection(conStr))
-            //    {
-            //        conn.Open();
-            //        string query = "INSERT INTO KhachHang (HoTen, SoDienThoai, CMND_CCCD, DiaChi, QuocTich, MoTa) " +
-            //                       "VALUES (@HoTen, @SoDienThoai, @CMND_CCCD, @DiaChi, @QuocTich, @MoTa)";
-
-            //        SqlCommand cmd = new SqlCommand(query, conn);
-            //        cmd.Parameters.AddWithValue("@HoTen", txtTenKH.Text);
-            //        cmd.Parameters.AddWithValue("@SoDienThoai", txtSDT.Text);
-            //        cmd.Parameters.AddWithValue("@CMND_CCCD", txtCMND.Text);
-            //        cmd.Parameters.AddWithValue("@DiaChi", txtDiaChi.Text);
-            //        cmd.Parameters.AddWithValue("@QuocTich", txtQuocTich.Text);
-            //        //cmd.Parameters.AddWithValue("@MoTa", txtLoaiPhong.Text);
-
-            //        cmd.ExecuteNonQuery();
-            //        MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //        LoadKhachHang(); // Load lại data
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Lỗi: " + ex.Message);
-            //}
+          
         }
 
 
@@ -124,21 +127,7 @@ namespace QuanLyKhachSan
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)
-            //{
-            //    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-
-            //    txtTenKH.Text = row.Cells["TenKH"].Value.ToString();
-            //    txtSDT.Text = row.Cells["SDT"].Value.ToString();
-            //    txtCMND.Text = row.Cells["CMND"].Value.ToString();
-            //    txtDiaChi.Text = row.Cells["DiaChi"].Value.ToString();
-            //    txtQuocTich.Text = row.Cells["QuocTich"].Value.ToString();
-            
-            //    txtNgayDangKy.Text = row.Cells["NgayDangKy"].Value.ToString();
-            //    //txtLoaiPhong.Text = row.Cells["LoaiPhong"].Value.ToString();
-            //    txtSoPhong.Text = row.Cells["SoPhong"].Value.ToString();
-            //    //txtGiaTien.Text = row.Cells["GiaTien"].Value.ToString();
-            //}
+          
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -148,6 +137,7 @@ namespace QuanLyKhachSan
 
         private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            enable(false);
             int r = e.RowIndex;
             if (r >= 0)
             {
@@ -176,6 +166,7 @@ namespace QuanLyKhachSan
                 mySqlCommand.ExecuteReader();
                 MessageBox.Show("Xóa dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadData();
+                //mySqlConnection.Close();
             }
             catch(Exception exception)
             {
@@ -191,12 +182,62 @@ namespace QuanLyKhachSan
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-
+            enable(true);
         }
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+                mySqlConnection = new SqlConnection(conStr);
+                mySqlConnection.Open();
+                string query = $"exec updateCus {cusID}, '{customeName.Text}', '{phoneNumber.Text}', {customeID.Text}, '{address.Text}', '{nationality.Text}', null";
+                mySqlCommand = new SqlCommand(query, mySqlConnection);
+                mySqlCommand.ExecuteReader();
+                MessageBox.Show("Cập nhật thông tin thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //mySqlConnection.Close();
+                loadData();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Error: " + exception.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void rdBtnName_CheckedChanged(object sender, EventArgs e)
+        {
+            //if (rdBtnName.Checked) currentActive = 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+         
+            string query = "";
+            if (rdBtnName.Checked)
+            {
+                query = $"select * from KhachHang where KhachHang.HoTen LIKE N'%{tbSearch.Text.Trim()}%'";
+            }
+            else if (btnNationality.Checked)
+            {
+                query = $"select * from KhachHang where KhachHang.QuocTich LIKE N'%{tbSearch.Text.Trim()}%'";
+            }
+            loadData(query);
+        }
+
+        private void tbSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+              
+
+            }
         }
     }
 }

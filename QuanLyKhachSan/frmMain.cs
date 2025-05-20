@@ -1,4 +1,5 @@
-﻿using QuanLyKhachSan.Pay;
+﻿using Myproject1;
+using QuanLyKhachSan.Pay;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,7 +62,7 @@ namespace QuanLyKhachSan
             handleActive(sender);
 
             openChild(new frmHome());
-            
+        
         }
      
         private void btnEmployee_Click(object sender, EventArgs e)
