@@ -86,7 +86,7 @@ namespace QuanLyKhachSan
             openChild(new frmClient());
         }
 
-       /* private void btnPay_Click(object sender, EventArgs e)
+        private void btnPay_Click(object sender, EventArgs e)
         {
 
             handleActive(sender);
@@ -94,7 +94,7 @@ namespace QuanLyKhachSan
              openChild(new frmPay());
 
             
-        }*/
+        }
 
 
 
@@ -105,40 +105,7 @@ namespace QuanLyKhachSan
              openChild(new frmHome());
 
          }
-        private frmLoading loadingForm;
-        private async void btnPay_Click(object sender, EventArgs e)
-        {
-            loadingForm = new frmLoading();
-
-            // Show form loading trên UI thread
-            handleActive(sender);
-
-            openChild(loadingForm);
-
-            await Task.Run(() =>
-            {
-                // Giả lập xử lý lâu
-                //Thread.Sleep(3000);
-
-                // Đóng form loading phải chạy trên UI thread
-                if (loadingForm.InvokeRequired)
-                {
-                    loadingForm.Invoke((MethodInvoker)delegate {
-                        loadingForm.Close();
-                    });
-                }
-                else
-                {
-                    loadingForm.Close();
-                }
-            });
-
-            // Sau khi loading xong, mở form thanh toán
-            handleActive(sender);
-
-            openChild(new frmPay());
-        }
-
+        
 
         private void btnHome_MouseHover(object sender, EventArgs e)
         {

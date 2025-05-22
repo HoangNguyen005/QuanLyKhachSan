@@ -116,12 +116,6 @@
     <Compile Include="Pay\DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pay\frmLoading.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pay\frmLoading.Designer.cs">
-      <DependentUpon>frmLoading.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pay\frmPay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,9 +172,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pay\DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pay\frmLoading.resx">
-      <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pay\frmPay.resx">
       <DependentUpon>frmPay.cs</DependentUpon>
