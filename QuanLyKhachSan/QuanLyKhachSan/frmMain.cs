@@ -86,7 +86,7 @@ namespace QuanLyKhachSan
             openChild(new frmClient());
         }
 
-       /* private void btnPay_Click(object sender, EventArgs e)
+        private void btnPay_Click(object sender, EventArgs e)
         {
 
             handleActive(sender);
@@ -94,7 +94,7 @@ namespace QuanLyKhachSan
              openChild(new frmPay());
 
             
-        }*/
+        }
 
 
 
@@ -105,8 +105,8 @@ namespace QuanLyKhachSan
              openChild(new frmHome());
 
          }
-        private frmLoading loadingForm;
-        private async void btnPay_Click(object sender, EventArgs e)
+       // private frmLoading loadingForm;
+        /*private async void btnPay_Click(object sender, EventArgs e)
         {
             loadingForm = new frmLoading();
 
@@ -138,7 +138,7 @@ namespace QuanLyKhachSan
 
             openChild(new frmPay());
         }
-
+        */
 
         private void btnHome_MouseHover(object sender, EventArgs e)
         {
