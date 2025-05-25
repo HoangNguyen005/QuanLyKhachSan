@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyKhachSan.Pay
 {
-    public partial class DoanhThu: Form
+    public partial class frmDoanhThu: Form
     {
-        public DoanhThu()
+        public frmDoanhThu()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace QuanLyKhachSan.Pay
 {
-    partial class DoanhThu
+    partial class frmDoanhThu
     {
         /// <summary>
         /// Required designer variable.

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Guna.UI2.WinForms;
+using QuanLyKhachSan.Pay;
 
 namespace QuanLyKhachSan
 {
@@ -35,57 +36,111 @@ namespace QuanLyKhachSan
         {
             InitializeComponent();
         }
-
-        private void LoadDanhSachPhong(int CheDo = 0)
+        public class Phong
         {
-
-            string query = "";
-
-            if ((txtSearch.Text == "") && (CheDo == 0))//Tìm mặc định
-            {
-                query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong";
-            }
-            else//Tìm phòng đang ss
-                if (CheDo == 1)
-            {
-                query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai = N'Đang sử dụng'";
-            }
-            else
-                   if (CheDo == 2)//tìm phòng trống
-            {
-                query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai  = N'Trống'";
-            }
-            //= mã phong hoặc loại
-            else query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong  WHERE  (p.MaPhong LIKE N'%" + txtSearch.Text + "%')or (p.LoaiPhong LIKE N'%" + txtSearch.Text + "%') or (ttp.TrangThai LIKE N'%" + txtSearch.Text + "%') ";
-
-            using (SqlConnection conn = new SqlConnection(conStr))
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                flowLayoutPanel1.Controls.Clear();
-                while (reader.Read())
-                {
-                    var uc = new UsPay();
-                    uc.MaPhong = reader["MaPhong"].ToString();
-                    uc.TrangThai = reader["TrangThai"].ToString();
-                    uc.LoaiPhong = reader["LoaiPhong"].ToString();
-
-                    flowLayoutPanel1.Controls.Add(uc);
-                    // Đổi màu buttom
-                    btnDichVu.FillColor = Color.Gray;
-                    btnPhong.FillColor = Color.White;
-                    btnDichVu.ForeColor = Color.White;
-                    btnPhong.ForeColor = Color.Black;
-                    btnThanhToan.Enabled = false;
-                    btnThanhToan.FillColor = Color.LightGray; // Làm màu mờ đi (tuỳ chỉnh)
-                    btnThanhToan.ForeColor = Color.DarkGray;  // Làm màu chữ nhạt đi
-
-                }
-                conn.Close();
-            }
+            public string MaPhong { get; set; }
+            public string LoaiPhong { get; set; }
+            public string TrangThai { get; set; }
         }
+
+
+
+        private async void LoadDanhSachPhongAsync()
+        {
+            flowLayoutPanel1.Controls.Clear();
+
+            // Hiển thị thông báo chờ hoặc spinner nếu cần
+            //lblStatus.Text = "Đang tải dữ liệu...";
+
+            // Chạy truy vấn ở thread nền
+            List<Phong> danhSachPhong = await Task.Run(() =>
+            {
+                var list = new List<Phong>();
+                using (SqlConnection conn = new SqlConnection(conStr))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT p.*, ttp.TrangThai FROM Phong p JOIN TrangThaiPhong ttp ON p.MaPhong = ttp.MaPhong", conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        list.Add(new Phong
+                        {
+                            MaPhong = reader["MaPhong"].ToString(),
+                            LoaiPhong = reader["LoaiPhong"].ToString(),
+                            TrangThai = reader["TrangThai"].ToString()
+                        });
+                    }
+                }
+                return list;
+            });
+
+            // Sau khi có dữ liệu, load vào UI
+            flowLayoutPanel1.SuspendLayout();
+
+            foreach (var phong in danhSachPhong)
+            {
+                var uc = new UsPay();
+                uc.MaPhong = phong.MaPhong;
+                uc.LoaiPhong = phong.LoaiPhong;
+                uc.TrangThai = phong.TrangThai;
+
+                flowLayoutPanel1.Controls.Add(uc);
+            }
+
+            flowLayoutPanel1.ResumeLayout();
+           // lblStatus.Text = $"Đã tải {danhSachPhong.Count} phòng.";
+        }
+
+        /* private void LoadDanhSachPhong(int CheDo = 0)
+         {
+
+             string query = "";
+
+             if ((txtSearch.Text == "") && (CheDo == 0))//Tìm mặc định
+             {
+                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong";
+             }
+             else//Tìm phòng đang ss
+                 if (CheDo == 1)
+             {
+                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai = N'Đang sử dụng'";
+             }
+             else
+                    if (CheDo == 2)//tìm phòng trống
+             {
+                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai  = N'Trống'";
+             }
+             //= mã phong hoặc loại
+             else query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong  WHERE  (p.MaPhong LIKE N'%" + txtSearch.Text + "%')or (p.LoaiPhong LIKE N'%" + txtSearch.Text + "%') or (ttp.TrangThai LIKE N'%" + txtSearch.Text + "%') ";
+
+             using (SqlConnection conn = new SqlConnection(conStr))
+             {
+                 conn.Open();
+                 SqlCommand cmd = new SqlCommand(query, conn);
+                 SqlDataReader reader = cmd.ExecuteReader();
+
+                 flowLayoutPanel1.Controls.Clear();
+                 while (reader.Read())
+                 {
+                     var uc = new UsPay();
+                     uc.MaPhong = reader["MaPhong"].ToString();
+                     uc.TrangThai = reader["TrangThai"].ToString();
+                     uc.LoaiPhong = reader["LoaiPhong"].ToString();
+
+                     flowLayoutPanel1.Controls.Add(uc);
+                     // Đổi màu buttom
+                     btnDichVu.FillColor = Color.Gray;
+                     btnPhong.FillColor = Color.White;
+                     btnDichVu.ForeColor = Color.White;
+                     btnPhong.ForeColor = Color.Black;
+                     btnThanhToan.Enabled = false;
+                     btnThanhToan.FillColor = Color.LightGray; // Làm màu mờ đi (tuỳ chỉnh)
+                     btnThanhToan.ForeColor = Color.DarkGray;  // Làm màu chữ nhạt đi
+
+                 }
+                 conn.Close();
+             }
+         }*/
         private void LoadDanhSachDichVu()
         {
             flowLayoutPanel1.Controls.Clear();
@@ -124,11 +179,12 @@ namespace QuanLyKhachSan
         private void frmPay_Load(object sender, EventArgs e)
         {
             //kết nối tới CSDL
-           // mySqlConnection = new SqlConnection(conStr);
-          //  mySqlConnection.Open();
+            // mySqlConnection = new SqlConnection(conStr);
+            //  mySqlConnection.Open();
 
             //hiển thị các phòng
-            LoadDanhSachPhong(0);
+            LoadDanhSachPhongAsync();
+            //LoadDanhSachPhong(0);
             // panel_Load();
         }
         //table dung chung cho
@@ -360,7 +416,8 @@ namespace QuanLyKhachSan
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Thanh toán thành công!");
-                        LoadDanhSachPhong();
+                        LoadDanhSachPhongAsync();
+                        // LoadDanhSachPhong();
                         loadDichVu();
                         LoadUse();
                     }
@@ -375,7 +432,8 @@ namespace QuanLyKhachSan
         private void btnPhong_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
-            LoadDanhSachPhong();
+            LoadDanhSachPhongAsync();
+            //LoadDanhSachPhong();
         }
 
         private void btnDichVu_Click(object sender, EventArgs e)
@@ -421,17 +479,20 @@ namespace QuanLyKhachSan
         private void btnTatCa_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
-            LoadDanhSachPhong(0);
+            LoadDanhSachPhongAsync();
+            //LoadDanhSachPhong(0);
         }
 
         private void btnSuDung_Click(object sender, EventArgs e)
         {
-            LoadDanhSachPhong(1);
+            LoadDanhSachPhongAsync();
+            //LoadDanhSachPhong(1);
         }
 
         private void BtnChuaSuDung_Click(object sender, EventArgs e)
         {
-            LoadDanhSachPhong(2);
+            LoadDanhSachPhongAsync();
+            //LoadDanhSachPhong(2);
         }
 
         private void txtTenPhong_TextChanged(object sender, EventArgs e)
@@ -516,6 +577,12 @@ namespace QuanLyKhachSan
         private void txtHoaDon_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Form DoanhThu = new frmDoanhThu();
+            DoanhThu.ShowDialog();
         }
     }
 }
