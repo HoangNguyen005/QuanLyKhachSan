@@ -90,5 +90,10 @@ namespace QuanLyKhachSan
                 this.AcceptButton = btnLogin;
             }
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

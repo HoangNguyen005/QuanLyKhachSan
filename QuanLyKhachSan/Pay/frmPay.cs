@@ -83,6 +83,7 @@ namespace QuanLyKhachSan
                     btnThanhToan.ForeColor = Color.DarkGray;  // Làm màu chữ nhạt đi
 
                 }
+                conn.Close();
             }
         }
         private void LoadDanhSachDichVu()

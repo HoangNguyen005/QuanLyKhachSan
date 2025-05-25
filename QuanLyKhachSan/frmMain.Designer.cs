@@ -54,7 +54,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(283, 746);
+            this.panel1.Size = new System.Drawing.Size(226, 701);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -227,18 +227,17 @@
             // 
             this.panel_body.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_body.Location = new System.Drawing.Point(283, 0);
+            this.panel_body.Location = new System.Drawing.Point(226, 0);
             this.panel_body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_body.Name = "panel_body";
-            this.panel_body.Size = new System.Drawing.Size(1050, 746);
+            this.panel_body.Size = new System.Drawing.Size(1034, 701);
             this.panel_body.TabIndex = 2;
             this.panel_body.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_body_Paint);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1333, 746);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1260, 701);
             this.Controls.Add(this.panel_body);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
