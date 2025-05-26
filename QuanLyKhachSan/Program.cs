@@ -1,4 +1,5 @@
 ﻿using Myproject1;
+using QuanLyKhachSan.Pay;
 using System;
 using System.Collections.Generic;
 using System.Linq;

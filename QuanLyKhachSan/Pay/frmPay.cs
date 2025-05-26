@@ -245,6 +245,7 @@ namespace QuanLyKhachSan
 
                             //loadTongTien();   // Nếu muốn tính lại tổng tiền
                             loadDichVu();      // Gọi hàm load dịch vụ
+                            btnThanhToan.Enabled = true;
                         }
                         else
                         {
@@ -255,6 +256,7 @@ namespace QuanLyKhachSan
                             txtTenPhong.Text = "";
                             txtHoaDon.Text = "";
                             guna2DataGridView2.DataSource = null;
+                            btnThanhToan.Enabled = false;
                         }
                     }
                 }
@@ -403,7 +405,6 @@ namespace QuanLyKhachSan
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            //string connectionString = "Data Source=(local);Initial Catalog=QuanLyKhachSan;Integrated Security=True";
             using (SqlConnection conn = new SqlConnection(conStr))
             {
                 using (SqlCommand cmd = new SqlCommand("sp_CapNhatDaThanhToan", conn))
@@ -416,10 +417,13 @@ namespace QuanLyKhachSan
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Thanh toán thành công!");
+                        frmHoaDon hoaDon = new frmHoaDon(MaHoaDonn);
+                        hoaDon.ShowDialog();
                         LoadDanhSachPhongAsync();
                         // LoadDanhSachPhong();
                         loadDichVu();
                         LoadUse();
+                        
                     }
                     catch (Exception ex)
                     {
@@ -454,7 +458,7 @@ namespace QuanLyKhachSan
             {
                 if (ctrl is UsPay room)
                 {
-                    // Giả sử tìm theo Mã phòng hoặc Loại phòng
+                    //  tìm theo Mã phòng hoặc Loại phòng
                     string maPhong = room.MaPhong.ToLower();
                     string loaiPhong = room.LoaiPhong.ToLower();
 

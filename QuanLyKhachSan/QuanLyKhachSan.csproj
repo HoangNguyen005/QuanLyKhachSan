@@ -116,6 +116,12 @@
     <Compile Include="Pay\frmDoanhThu.Designer.cs">
       <DependentUpon>frmDoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pay\frmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pay\frmHoaDon.Designer.cs">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pay\frmPay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pay\frmDoanhThu.resx">
       <DependentUpon>frmDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pay\frmHoaDon.resx">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pay\frmPay.resx">
       <DependentUpon>frmPay.cs</DependentUpon>
