@@ -572,10 +572,10 @@ namespace QuanLyKhachSan
         private void txtTongTien_TextChanged(object sender, EventArgs e)
         {
             // Tính kích thước văn bản
-            Size size = TextRenderer.MeasureText(txtTongTien.Text, txtTongTien.Font);
+           // Size size = TextRenderer.MeasureText(txtTongTien.Text, txtTongTien.Font);
 
             // Cập nhật chiều rộng (thêm padding nếu cần)
-            txtTongTien.Width = size.Width + 15;
+            //txtTongTien.Width = size.Width + 15;
         }
 
         private void txtHoaDon_TextChanged(object sender, EventArgs e)
