@@ -71,11 +71,17 @@ namespace QuanLyKhachSan
 
             openChild(new frmImployee());
         }
-
+        
         private void btnBooking_Click(object sender, EventArgs e)
         {
             handleActive(sender);
 
+            openChild(new frmBookingRoom());
+        }
+        
+        public void DatPhong()// Gọi form Dặt phòng từ form thanh toán
+        {
+            
             openChild(new frmBookingRoom());
         }
 
@@ -91,9 +97,15 @@ namespace QuanLyKhachSan
 
             handleActive(sender);
 
-             openChild(new frmPay());
+             openChild(new frmPay(0));
 
             
+        }
+        public void ThanhToan()
+        {
+            //handleActive(btnPay.sen);
+
+            openChild(new frmPay(1));
         }
 
 

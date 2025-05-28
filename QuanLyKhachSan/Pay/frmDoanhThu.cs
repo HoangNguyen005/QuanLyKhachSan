@@ -62,7 +62,7 @@ namespace QuanLyKhachSan.Pay
                 tong += Convert.ToDecimal(row["TongTien"]);
             }
 
-            txtTongDoanhThu.Text = tong.ToString("N0") + " VNĐ";
+            guna2TextBox1.Text = tong.ToString("N0") + " VNĐ";
         }
 
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -93,11 +93,6 @@ namespace QuanLyKhachSan.Pay
                // HoaDon.MaHoaDon = int.Parse(maHoaDon); // gán mã hóa đơn cho form
                 HoaDon.ShowDialog();
             }
-        }
-
-        private void txtTongDoanhThu_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

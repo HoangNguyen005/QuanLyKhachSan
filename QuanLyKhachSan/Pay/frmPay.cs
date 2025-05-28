@@ -18,23 +18,31 @@ namespace QuanLyKhachSan
         //khai báo xâu kết nối tới CSDL
         private string conStr = "Data Source=(local);Initial Catalog=QuanLyKhachSan;Integrated Security=True";
         //định nghĩa đối tượng kết nối với CSDL
-        private SqlConnection mySqlConnection;
+        //private SqlConnection mySqlConnection;
         //định nghĩa đối tượng truy vấn/cập nhật dữ liệu
-        private SqlCommand mySqlCommand;
-        private SqlDataAdapter mySqlDataAdapter;
-        private SqlCommandBuilder mySqlCommandBuilder;
+        //private SqlCommand mySqlCommand;
+       // private SqlDataAdapter mySqlDataAdapter;
+       // private SqlCommandBuilder mySqlCommandBuilder;
         //Khai báo đối tượng để lưu dữ liệu của bảng Customer trên form
-        private DataTable dtCustomer;
+       // private DataTable dtCustomer;
         //khai báo biến để kiểm tra đã <thêm mới> hay sửa
         private bool modeNew;
 
         private string category = "";
         private string status = "";
         private string floor = "";
+        private int  mmahoadon;
 
-        public frmPay()
+        public frmPay(int i)
         {
             InitializeComponent();
+           // int phong=Phong;
+           if (i == 1) LoiGoi();
+        }
+        private void LoiGoi()
+        {
+            LoadUse();
+            LoadDataPhong();
         }
         public class Phong
         {
@@ -45,13 +53,28 @@ namespace QuanLyKhachSan
 
 
 
-        private async void LoadDanhSachPhongAsync()
+        private async void LoadDanhSachPhongAsync(int CheDo,int Trangthai)
         {
+            string query = "";
+
+            if (((txtSearch.Text == "") && (CheDo == 0))||(Trangthai==1))//Tìm mặc định
+            {
+                query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong";
+            }
+            else//Tìm phòng đang ss
+                if (CheDo == 1)
+            {
+                query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai = N'Đang sử dụng'";
+            }
+            else
+                   if (CheDo == 2)//tìm phòng trống
+            {
+                query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai  = N'Trống'";
+            }
+            //= mã phong hoặc loại
+            else query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong  WHERE  (p.MaPhong LIKE N'%" + txtSearch.Text + "%')or (p.LoaiPhong LIKE N'%" + txtSearch.Text + "%') or (ttp.TrangThai LIKE N'%" + txtSearch.Text + "%') ";
+
             flowLayoutPanel1.Controls.Clear();
-
-            // Hiển thị thông báo chờ hoặc spinner nếu cần
-            //lblStatus.Text = "Đang tải dữ liệu...";
-
             // Chạy truy vấn ở thread nền
             List<Phong> danhSachPhong = await Task.Run(() =>
             {
@@ -59,7 +82,7 @@ namespace QuanLyKhachSan
                 using (SqlConnection conn = new SqlConnection(conStr))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT p.*, ttp.TrangThai FROM Phong p JOIN TrangThaiPhong ttp ON p.MaPhong = ttp.MaPhong", conn);
+                    SqlCommand cmd = new SqlCommand(query, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
@@ -70,6 +93,7 @@ namespace QuanLyKhachSan
                             TrangThai = reader["TrangThai"].ToString()
                         });
                     }
+                    conn.Close();
                 }
                 return list;
             });
@@ -91,65 +115,15 @@ namespace QuanLyKhachSan
            // lblStatus.Text = $"Đã tải {danhSachPhong.Count} phòng.";
         }
 
-        /* private void LoadDanhSachPhong(int CheDo = 0)
-         {
-
-             string query = "";
-
-             if ((txtSearch.Text == "") && (CheDo == 0))//Tìm mặc định
-             {
-                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong";
-             }
-             else//Tìm phòng đang ss
-                 if (CheDo == 1)
-             {
-                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai = N'Đang sử dụng'";
-             }
-             else
-                    if (CheDo == 2)//tìm phòng trống
-             {
-                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong where ttp.TrangThai  = N'Trống'";
-             }
-             //= mã phong hoặc loại
-             else query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong  WHERE  (p.MaPhong LIKE N'%" + txtSearch.Text + "%')or (p.LoaiPhong LIKE N'%" + txtSearch.Text + "%') or (ttp.TrangThai LIKE N'%" + txtSearch.Text + "%') ";
-
-             using (SqlConnection conn = new SqlConnection(conStr))
-             {
-                 conn.Open();
-                 SqlCommand cmd = new SqlCommand(query, conn);
-                 SqlDataReader reader = cmd.ExecuteReader();
-
-                 flowLayoutPanel1.Controls.Clear();
-                 while (reader.Read())
-                 {
-                     var uc = new UsPay();
-                     uc.MaPhong = reader["MaPhong"].ToString();
-                     uc.TrangThai = reader["TrangThai"].ToString();
-                     uc.LoaiPhong = reader["LoaiPhong"].ToString();
-
-                     flowLayoutPanel1.Controls.Add(uc);
-                     // Đổi màu buttom
-                     btnDichVu.FillColor = Color.Gray;
-                     btnPhong.FillColor = Color.White;
-                     btnDichVu.ForeColor = Color.White;
-                     btnPhong.ForeColor = Color.Black;
-                     btnThanhToan.Enabled = false;
-                     btnThanhToan.FillColor = Color.LightGray; // Làm màu mờ đi (tuỳ chỉnh)
-                     btnThanhToan.ForeColor = Color.DarkGray;  // Làm màu chữ nhạt đi
-
-                 }
-                 conn.Close();
-             }
-         }*/
         private void LoadDanhSachDichVu()
         {
             flowLayoutPanel1.Controls.Clear();
             string query = "";
 
-            if (txtTimKiemDichVu.Text == "")
-            {
+           // if (txtTimKiemDichVu.Text == "")
+            //{
                 query = "SELECT dv.MaDichVu,dv.TenDichVu,dv.DonGia from DichVu dv  ";
-            }
+           // }
 
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -173,22 +147,16 @@ namespace QuanLyKhachSan
                     btnDichVu.ForeColor = Color.Black;
                     btnPhong.ForeColor = Color.White;
                 }
+                conn.Close();
             }
         }
 
         private void frmPay_Load(object sender, EventArgs e)
         {
-            //kết nối tới CSDL
-            // mySqlConnection = new SqlConnection(conStr);
-            //  mySqlConnection.Open();
-
-            //hiển thị các phòng
-            LoadDanhSachPhongAsync();
-            //LoadDanhSachPhong(0);
-            // panel_Load();
+            LoadDanhSachPhongAsync(0,0);
         }
         //table dung chung cho
-        private DataTable dt;
+       // private DataTable dt;
 
         public void LoadDataPhong()
         {
@@ -209,19 +177,20 @@ namespace QuanLyKhachSan
 
                     }
                 }
+                conn.Close ();
             }
         }
 
         private void LoadUse()
         {
             string sql = @"
-        SELECT kh.*, p.GiaPhong, p.MaPhong, ctd.MaHoaDon
-        FROM TrangThaiPhong ttp
-        INNER JOIN Phong p ON ttp.MaPhong = p.MaPhong
-        INNER JOIN ChiTietDatPhong ctd ON p.MaPhong = ctd.MaPhong
+        SELECT kh.MaKhachHang,kh.HoTen,kh.SoDienThoai,kh.CMND_CCCD,kh.DiaChi, ctd.MaPhong, ctd.MaHoaDon , hd.NgayLap as NgayNhan,dp.NgayTraPhong as NgayTra, hd.MoTa
+        FROM ThanhToan tt
+        INNER JOIN HoaDon hd ON tt.MaHoaDon = hd.MaHoaDon
+        INNER JOIN ChiTietDatPhong ctd ON hd.MaHoaDon = ctd.MaHoaDon
         INNER JOIN DatPhong dp ON ctd.MaDatPhong = dp.MaDatPhong
         INNER JOIN KhachHang kh ON dp.MaKhachHang = kh.MaKhachHang
-        WHERE ctd.MaPhong = @MaPhong AND ctd.TrangThai = 0";
+                WHERE ctd.MaPhong = @MaPhong AND ctd.TrangThai = 0";
 
             try
             {
@@ -234,18 +203,33 @@ namespace QuanLyKhachSan
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-
                         if (dt.Rows.Count > 0)
                         {
+                            mmahoadon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
+                            Global.MaHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
+                        }
+                        else
+                        {
+                            mmahoadon = 0;
+                            Global.MaHoaDon = 0;
+                        }
+                        if (dt.Rows.Count > 0 && dt.Rows[0]["MoTa"].ToString() == "R")
+                        {
+
                             txtCustomerName.Text = dt.Rows[0]["HoTen"].ToString();
                             txtPhoneNumber.Text = dt.Rows[0]["SoDienThoai"].ToString();
                             txtIDCard.Text = dt.Rows[0]["CMND_CCCD"].ToString();
                             txtTenPhong.Text = dt.Rows[0]["MaPhong"].ToString();
                             txtHoaDon.Text = dt.Rows[0]["MaHoaDon"].ToString();
+                            txtNgayNhan.Text = dt.Rows[0]["NgayNhan"].ToString();
+                            txtNgayTra.Text = dt.Rows[0]["NgayTra"].ToString();
 
-                            //loadTongTien();   // Nếu muốn tính lại tổng tiền
-                            loadDichVu();      // Gọi hàm load dịch vụ
+                            //loadTongTien();
+                            loadDichVu();
                             btnThanhToan.Enabled = true;
+                            btmNhanPhong.Enabled = false;
+                            btnThanhToan.Text = "Thanh toán";
+
                         }
                         else
                         {
@@ -255,16 +239,37 @@ namespace QuanLyKhachSan
                             txtTongTien.Text = "";
                             txtTenPhong.Text = "";
                             txtHoaDon.Text = "";
+                            txtNgayNhan.Text = "";
+                            txtNgayTra.Text = "";
                             guna2DataGridView2.DataSource = null;
                             btnThanhToan.Enabled = false;
+                            if (mmahoadon == 0) { 
+                                btmNhanPhong.Enabled = false;
+                                DatPhong();
+                            }
+                            else
+                            {
+                                btmNhanPhong.Enabled = true;
+                                btmNhanPhong.FillColor = Color.ForestGreen;
+                                btmNhanPhong.ForeColor = Color.White;
+                                btnThanhToan.Text = "Thanh toán";
+
+                            }
                         }
+                        
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải thông tin khách hàng: " + ex.Message);
+                //MessageBox.Show("Lỗi khi tải thông tin khách hàng: " + ex.Message);
             }
+        }
+
+        private void DatPhong()
+        {
+            btnThanhToan.Enabled=true;
+            btnThanhToan.Text = "Đặt phòng";
         }
 
         int MaHoaDonn;
@@ -279,7 +284,7 @@ namespace QuanLyKhachSan
         INNER JOIN ThanhToan tt ON hd.MaHoaDon = tt.MaHoaDon
         WHERE ctd.MaPhong = @MaPhong AND ctd.TrangThai = 0";
 
-            using (SqlConnection conn = new SqlConnection(conStr)) // hoặc mySqlConnection nếu cố định
+            using (SqlConnection conn = new SqlConnection(conStr))
             using (SqlCommand cmd = new SqlCommand(sql, conn))
             {
                 cmd.Parameters.AddWithValue("@MaPhong", Global.ROOM_CODE);
@@ -295,7 +300,7 @@ namespace QuanLyKhachSan
                         txtTongTien.Text = tongTien.ToString("N0");
                         MaHoaDonn = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
                         btnThanhToan.Enabled = true;
-                        btnThanhToan.FillColor = Color. ForestGreen; // màu gốc bạn dùng
+                        btnThanhToan.FillColor = Color. ForestGreen;
                         btnThanhToan.ForeColor = Color. White;
 
                     }
@@ -329,7 +334,7 @@ namespace QuanLyKhachSan
                         DataTable dt = new DataTable();
                         dt.Load(reader);
 
-                        if (dt.Rows.Count > 0)
+                        if (dt.Rows.Count > 0 && txtCustomerName.Text!="" )
                         {
                             int maHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
                             int maDichVu = Global.MaDichVu;// Giả sử label chứa mã dịch vụ
@@ -358,12 +363,12 @@ namespace QuanLyKhachSan
                         }
                         else
                         {
-                            Console.WriteLine("MaDichVu: " + Global.MaDichVu);
-
                             MessageBox.Show("Không tìm thấy hóa đơn hoặc dịch vụ.");
+                            Global.MaDichVu = 0;
                         }
                     }
                 }
+                conn.Close();
 
             }
         }
@@ -396,6 +401,7 @@ namespace QuanLyKhachSan
 
                     }
                 }
+                conn.Close ();
             }
         }
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
@@ -405,29 +411,38 @@ namespace QuanLyKhachSan
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(conStr))
+            if (btnThanhToan.Text == "Đặt phòng")
             {
-                using (SqlCommand cmd = new SqlCommand("sp_CapNhatDaThanhToan", conn))
+                ((frmMain)this.ParentForm).DatPhong();
+            }
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(conStr))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@MaHoaDon", MaHoaDonn);
+                    using (SqlCommand cmd = new SqlCommand("sp_CapNhatDaThanhToan", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@MaHoaDon", MaHoaDonn);
 
-                    try
-                    {
-                        conn.Open();
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Thanh toán thành công!");
-                        frmHoaDon hoaDon = new frmHoaDon(MaHoaDonn);
-                        hoaDon.ShowDialog();
-                        LoadDanhSachPhongAsync();
-                        // LoadDanhSachPhong();
-                        loadDichVu();
-                        LoadUse();
-                        
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi khi xác nhận thanh toán: " + ex.Message);
+                        try
+                        {
+                            conn.Open();
+                            MessageBox.Show("Chắc chắn thanh toán đơn hàng này không! ", "Thông báo", MessageBoxButtons.YesNo);
+
+                            cmd.ExecuteNonQuery();
+                            frmHoaDon hoaDon = new frmHoaDon(MaHoaDonn);
+                            hoaDon.ShowDialog();
+                            LoadDanhSachPhongAsync(0,0);
+                            loadDichVu();
+                            LoadUse();
+                            MessageBox.Show("Thanh toán thành công!");
+                            conn.Close();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi khi xác nhận thanh toán: " + ex.Message);
+                        }
                     }
                 }
             }
@@ -436,8 +451,7 @@ namespace QuanLyKhachSan
         private void btnPhong_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
-            LoadDanhSachPhongAsync();
-            //LoadDanhSachPhong();
+            LoadDanhSachPhongAsync(0,0);
         }
 
         private void btnDichVu_Click(object sender, EventArgs e)
@@ -452,8 +466,11 @@ namespace QuanLyKhachSan
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            LoadDanhSachPhongAsync(0, 1);
             string searchText = txtSearch.Text.Trim().ToLower();
-
+           
+            
+            
             foreach (System.Windows.Forms.Control ctrl in flowLayoutPanel1.Controls)
             {
                 if (ctrl is UsPay room)
@@ -473,6 +490,7 @@ namespace QuanLyKhachSan
                     }
                 }
             }
+           // txtTimKiemDichVu.Text = "";
         }
 
         private void btnShearch_Click(object sender, EventArgs e)
@@ -483,20 +501,17 @@ namespace QuanLyKhachSan
         private void btnTatCa_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
-            LoadDanhSachPhongAsync();
-            //LoadDanhSachPhong(0);
+            LoadDanhSachPhongAsync(0,0);
         }
 
         private void btnSuDung_Click(object sender, EventArgs e)
         {
-            LoadDanhSachPhongAsync();
-            //LoadDanhSachPhong(1);
+            LoadDanhSachPhongAsync(1,0);
         }
 
         private void BtnChuaSuDung_Click(object sender, EventArgs e)
         {
-            LoadDanhSachPhongAsync();
-            //LoadDanhSachPhong(2);
+            LoadDanhSachPhongAsync(2,0);
         }
 
         private void txtTenPhong_TextChanged(object sender, EventArgs e)
@@ -506,12 +521,16 @@ namespace QuanLyKhachSan
 
         private void txtTimKiemDichVu_TextChanged(object sender, EventArgs e)
         {
-            string searchText = txtSearch.Text.Trim().ToLower();
-
+            LoadDanhSachDichVu();
+            string searchText = txtTimKiemDichVu.Text.Trim().ToLower();
+            
+            
+            
             foreach (System.Windows.Forms.Control ctrl in flowLayoutPanel1.Controls)
             {
                 if (ctrl is UsDichVuPay roomm)
                 {
+                    
                     // Giả sử tìm theo Mã phòng hoặc Loại phòng
                     string MaDichVu = roomm.MaDichVu.ToLower();
                     string TenDichVu = roomm.TenDichVu.ToLower();
@@ -519,6 +538,7 @@ namespace QuanLyKhachSan
                     // Kiểm tra nếu chuỗi nhập vào có chứa MaPhong hoặc LoaiPhong
                     if (MaDichVu.Contains(searchText) || TenDichVu.Contains(searchText))
                     {
+                        
                         roomm.Visible = true; // Hiện phòng
                     }
                     else
@@ -527,6 +547,7 @@ namespace QuanLyKhachSan
                     }
                 }
             }
+            txtSearch.Text = "";
         }
 
         private void txtCustomerName_TextChanged(object sender, EventArgs e)
@@ -587,6 +608,48 @@ namespace QuanLyKhachSan
         {
             Form DoanhThu = new frmDoanhThu();
             DoanhThu.ShowDialog();
+        }
+
+        private void btmNhanPhong_Click(object sender, EventArgs e)
+        {
+            if (mmahoadon == 0) return;
+            else
+            {
+                string maHoaDon = mmahoadon.ToString(); // hoặc nơi bạn đang giữ mã hóa đơn
+
+                string sql = @"
+        UPDATE HoaDon 
+        SET MoTa = @MoTa, 
+            NgayLap = @NgayLap
+        WHERE MaHoaDon = @MaHoaDon";
+
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(conStr))
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MoTa", "R");
+                        cmd.Parameters.AddWithValue("@NgayLap", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
+
+                        conn.Open();
+                        int rows = cmd.ExecuteNonQuery();
+
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Đã cập nhật trạng thái nhận phòng thành công!");
+                            LoadUse();
+                            mmahoadon = 0;
+                        }
+                        else
+                            MessageBox.Show("Không tìm thấy hóa đơn để cập nhật.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi cập nhật nhận phòng: " + ex.Message);
+                }
+            }
         }
     }
 }

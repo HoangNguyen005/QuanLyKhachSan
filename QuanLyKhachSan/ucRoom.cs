@@ -60,10 +60,31 @@ namespace QuanLyKhachSan
 
         private void ucRoom_Click(object sender, EventArgs e)
         {
-            if (lbStatus.Text != "Trống") return;
             Global.ROOM_CODE = int.Parse(lbRoomNumber.Text.Trim());
-            Form bookingDetail = new frmBookingRoomDetail();
-            bookingDetail.ShowDialog();
+            if (lbStatus.Text != "Trống")
+            {
+                
+                Control current = this;
+                while (current != null && !(current is frmMain))
+                {
+                    current = current.Parent;
+                }
+
+                if (current is frmMain mainForm)
+                {
+                    mainForm.ThanhToan(); // Gọi chính xác frmMain đang chứa ucRoom
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy form chính (frmMain).");
+                }
+
+            }
+            else
+            {
+                Form bookingDetail = new frmBookingRoomDetail();
+                bookingDetail.ShowDialog();
+            }
         }
 
         private void category_Click(object sender, EventArgs e)
