@@ -96,6 +96,7 @@ namespace QuanLyKhachSan
 
         private void frmRoomManage_Load(object sender, EventArgs e)
         {
+        
             displayData();
         }
 
@@ -125,6 +126,17 @@ namespace QuanLyKhachSan
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
+            if (tbRoomId.Text == "" || cbCategoryRoom.Text == "" || tbRoomPrice.Text == "" || tbArea.Text == "" || cbFloor.Text == "" || cbRoomStatus.Text == "" || cbNumberBed.Text == "")
+            {
+                MessageBox.Show("Các trường dữ liệu là bắt buộc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (int.Parse(tbArea.Text) <= 0 || int.Parse(tbArea.Text) > 100)
+            {
+                MessageBox.Show("Trường diện tích không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
             string query = "";
             try
             {
