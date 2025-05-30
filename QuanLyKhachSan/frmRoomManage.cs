@@ -65,6 +65,10 @@ namespace QuanLyKhachSan
                 tbDescribe.ReadOnly = false;
                 utilities.BackColor = Color.WhiteSmoke;
                 tbDescribe.BackColor = Color.WhiteSmoke;
+                btnCancel.Enabled = true;
+                btnRecord.Enabled = true;
+                btnUpdate.Enabled = false;
+                tbnAdd.Enabled = false;
             } else
             {
                 tbRoomId.ReadOnly = true;
@@ -79,6 +83,10 @@ namespace QuanLyKhachSan
                 cbFloor.Enabled = false;
                 utilities.BackColor = Color.LightGray;
                 tbDescribe.BackColor = Color.LightGray;
+                btnCancel.Enabled = false;
+                btnRecord.Enabled = false;
+                btnUpdate.Enabled = true;
+                tbnAdd.Enabled = true;
             }
         }
 
@@ -96,7 +104,7 @@ namespace QuanLyKhachSan
 
         private void frmRoomManage_Load(object sender, EventArgs e)
         {
-        
+            enable(true);
             displayData();
         }
 

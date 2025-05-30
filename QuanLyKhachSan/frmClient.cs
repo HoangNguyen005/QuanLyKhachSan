@@ -66,6 +66,8 @@ namespace QuanLyKhachSan
             address.ReadOnly = !result;
             btnRecord.Enabled = result;
             btnCancel.Enabled = result;
+            btnUpdate.Enabled = !result;
+            btnDelete.Enabled = !result;
            
         }
 
