@@ -95,5 +95,11 @@ namespace QuanLyKhachSan
         {
 
         }
+
+        private void signin_Click(object sender, EventArgs e)
+        {
+            Form formSignIN = new frmsigin();
+            formSignIN.ShowDialog();
+        }
     }
 }

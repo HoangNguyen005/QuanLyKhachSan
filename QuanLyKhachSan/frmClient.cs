@@ -57,24 +57,19 @@ namespace QuanLyKhachSan
 
         private void enable(bool result)
         {
-            if(result)
-            {
-                customeName.ReadOnly = false;
-                phoneNumber.ReadOnly = false;
-                customeID.ReadOnly = false;
-                roomNumber.ReadOnly = false;
-                nationality.ReadOnly = false;
-                address.ReadOnly = false;
-            } else
-            {
-                customeName.ReadOnly = true;
-                phoneNumber.ReadOnly = true;
-                customeID.ReadOnly = true;
-                roomNumber.ReadOnly = true;
-                nationality.ReadOnly = true;
-                address.ReadOnly = true;
-            }
+            
+            customeName.ReadOnly = !result;
+            phoneNumber.ReadOnly = !result;
+            customeID.ReadOnly = !result;
+            roomNumber.ReadOnly = !result;
+            nationality.ReadOnly = !result;
+            address.ReadOnly = !result;
+            btnRecord.Enabled = result;
+            btnCancel.Enabled = result;
+           
         }
+
+        //private void setControl(bool )
 
         private void frmClient_Load(object sender, EventArgs e)
         {
