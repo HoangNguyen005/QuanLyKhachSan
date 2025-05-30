@@ -11,5 +11,6 @@ namespace QuanLyKhachSan
         public static int ROOM_CODE = 100;
         public static int MaDichVu = 0;
         public static int MaHoaDon = 0;
+        public static string AUTHORIZATION = "";
     }
 }

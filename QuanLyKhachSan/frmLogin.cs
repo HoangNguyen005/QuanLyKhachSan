@@ -49,6 +49,7 @@ namespace QuanLyKhachSan
                 {
                     userName = reader["TenDangNhap"].ToString();
                     password =  reader["MatKhau"].ToString();
+                    Global.AUTHORIZATION = reader["QuyenTruyCap"].ToString();
                     //MessageBox.Show(userName, "sdfsdf");
                 }
 
