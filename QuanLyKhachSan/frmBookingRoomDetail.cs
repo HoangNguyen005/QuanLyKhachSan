@@ -184,8 +184,7 @@ namespace QuanLyKhachSan
                 mySqlCommand.ExecuteReader();
 
                 MessageBox.Show("Đặt phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmBookingRoomDetail newForm = new frmBookingRoomDetail();
-                newForm.Close();
+                this.Close();
             } catch(Exception exception)
             {
                 MessageBox.Show(exception.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

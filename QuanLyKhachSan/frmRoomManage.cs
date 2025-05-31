@@ -69,6 +69,7 @@ namespace QuanLyKhachSan
                 btnRecord.Enabled = true;
                 btnUpdate.Enabled = false;
                 tbnAdd.Enabled = false;
+                btnDelete.Enabled = false;
             } else
             {
                 tbRoomId.ReadOnly = true;
@@ -87,6 +88,8 @@ namespace QuanLyKhachSan
                 btnRecord.Enabled = false;
                 btnUpdate.Enabled = true;
                 tbnAdd.Enabled = true;
+                btnDelete.Enabled = true;
+
             }
         }
 
@@ -262,6 +265,11 @@ namespace QuanLyKhachSan
                 query = $"select * from Phong where Phong.MaPhong LIKE N'%{tbSearch.Text.Trim()}%'";
             }
             displayData(query);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            enable(false);
         }
     }
 }

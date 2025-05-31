@@ -161,8 +161,21 @@ namespace QuanLyKhachSan
                 mySqlConnection.Open();
                 string query = $"exec deleteCus {int.Parse(cusID)}";
                 mySqlCommand = new SqlCommand(query, mySqlConnection);
-                mySqlCommand.ExecuteReader();
-                MessageBox.Show("Xóa dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SqlDataReader reader = mySqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string result = reader["Result"].ToString();
+                    if (result == "DELETED")
+                    {
+                        MessageBox.Show("Xóa dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể xóa khách hàng này vì khách hàng này chưa thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
                 loadData();
                 //mySqlConnection.Close();
             }
@@ -175,7 +188,7 @@ namespace QuanLyKhachSan
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            enable(false);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
