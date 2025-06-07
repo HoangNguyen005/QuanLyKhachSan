@@ -245,14 +245,12 @@ namespace QuanLyKhachSan
                             btnThanhToan.Enabled = false;
                             if (mmahoadon == 0) { 
                                 btmNhanPhong.Enabled = false;
-                                DatPhong();
                             }
                             else
                             {
                                 btmNhanPhong.Enabled = true;
                                 btmNhanPhong.FillColor = Color.ForestGreen;
                                 btmNhanPhong.ForeColor = Color.White;
-                                btnThanhToan.Text = "Thanh toán";
 
                             }
                         }
@@ -266,11 +264,6 @@ namespace QuanLyKhachSan
             }
         }
 
-        private void DatPhong()
-        {
-            btnThanhToan.Enabled=true;
-            btnThanhToan.Text = "Đặt phòng";
-        }
 
         int MaHoaDonn;
         private void LoadTongTien()
@@ -411,12 +404,7 @@ namespace QuanLyKhachSan
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            if (btnThanhToan.Text == "Đặt phòng")
-            {
-                ((frmMain)this.ParentForm).DatPhong();
-            }
-            else
-            {
+            
                 using (SqlConnection conn = new SqlConnection(conStr))
                 {
                     using (SqlCommand cmd = new SqlCommand("sp_CapNhatDaThanhToan", conn))
@@ -446,7 +434,7 @@ namespace QuanLyKhachSan
                     }
                 }
             }
-        }
+        
 
         private void btnPhong_Click(object sender, EventArgs e)
         {

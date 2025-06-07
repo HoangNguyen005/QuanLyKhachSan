@@ -79,11 +79,6 @@ namespace QuanLyKhachSan
             openChild(new frmBookingRoom());
         }
         
-        public void DatPhong()// Gọi form Dặt phòng từ form thanh toán
-        {
-            
-            openChild(new frmBookingRoom());
-        }
 
         private void btnClient_Click(object sender, EventArgs e)
         {
@@ -100,12 +95,6 @@ namespace QuanLyKhachSan
              openChild(new frmPay(0));
 
             
-        }
-        public void ThanhToan()
-        {
-            //handleActive(btnPay.sen);
-
-            openChild(new frmPay(1));
         }
 
 
