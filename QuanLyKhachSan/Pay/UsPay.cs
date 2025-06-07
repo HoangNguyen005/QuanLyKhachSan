@@ -34,15 +34,22 @@ namespace QuanLyKhachSan
                 lbStatus.Text = value;
                 if (value == "Trống")
                 {
-                    guna2Panel3.FillColor = Color.Transparent;
-                    lbRoomNumber.ForeColor = Color.Black;
-                    lbStatus.ForeColor = Color.Black;
-                    category.ForeColor = Color.Black;
-                    lbRoomNumber.BackColor = Color.White;
-                    lbStatus.BackColor = Color.White;
-                    category.BackColor = Color.White;
+                    /* guna2Panel3.FillColor = Color.Transparent;
+                     lbRoomNumber.ForeColor = Color.Black;
+                     lbStatus.ForeColor = Color.Black;
+                     category.ForeColor = Color.Black;
+                     lbRoomNumber.BackColor = Color.White;
+                     lbStatus.BackColor = Color.White;
+                     category.BackColor = Color.White;*/
                 }
-                // else
+                else {
+                    pnAnhGiuong.Visible = true;
+                    pnTrangThai.Visible = false;
+                    guna2Panel3.BorderThickness = 2;
+                    guna2Panel3.BorderColor = Color.Black;
+
+
+                }
                 //   guna2Panel3.FillColor = Color.Transparent;
 
             }

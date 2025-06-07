@@ -46,15 +46,16 @@
             this.btmNhanPhong = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.txtNgayTra = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtPhoneNumber = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtNgayNhan = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIDCard = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTimKiemDichVu = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtCustomerName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTenPhong = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.txtNgayNhan = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtNgayTra = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtPhoneNumber = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtHoaDon = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnShearch = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -70,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView2)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
+            this.guna2Panel5.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,15 +119,13 @@
             this.guna2Panel3.Controls.Add(this.guna2Panel4);
             this.guna2Panel3.Controls.Add(this.label4);
             this.guna2Panel3.Controls.Add(this.guna2DataGridView1);
-            this.guna2Panel3.Controls.Add(this.txtNgayTra);
             this.guna2Panel3.Controls.Add(this.label3);
-            this.guna2Panel3.Controls.Add(this.txtPhoneNumber);
-            this.guna2Panel3.Controls.Add(this.txtNgayNhan);
             this.guna2Panel3.Controls.Add(this.label1);
             this.guna2Panel3.Controls.Add(this.txtIDCard);
             this.guna2Panel3.Controls.Add(this.txtTimKiemDichVu);
             this.guna2Panel3.Controls.Add(this.txtCustomerName);
             this.guna2Panel3.Controls.Add(this.txtTenPhong);
+            this.guna2Panel3.Controls.Add(this.guna2Panel5);
             this.guna2Panel3.FillColor = System.Drawing.Color.White;
             this.guna2Panel3.Location = new System.Drawing.Point(519, 49);
             this.guna2Panel3.Name = "guna2Panel3";
@@ -323,7 +323,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(7, 144);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(7, 152);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -338,7 +338,7 @@
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
             this.guna2DataGridView1.RowTemplate.Height = 24;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(494, 55);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(494, 47);
             this.guna2DataGridView1.TabIndex = 6;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -363,91 +363,16 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
-            // txtNgayTra
-            // 
-            this.txtNgayTra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNgayTra.BorderColor = System.Drawing.Color.White;
-            this.txtNgayTra.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNgayTra.DefaultText = "";
-            this.txtNgayTra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtNgayTra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtNgayTra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNgayTra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNgayTra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNgayTra.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNgayTra.ForeColor = System.Drawing.Color.Black;
-            this.txtNgayTra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNgayTra.Location = new System.Drawing.Point(317, 106);
-            this.txtNgayTra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtNgayTra.Name = "txtNgayTra";
-            this.txtNgayTra.PlaceholderText = "Ngày trả";
-            this.txtNgayTra.ReadOnly = true;
-            this.txtNgayTra.SelectedText = "";
-            this.txtNgayTra.Size = new System.Drawing.Size(158, 24);
-            this.txtNgayTra.TabIndex = 8;
-            this.txtNgayTra.TextChanged += new System.EventHandler(this.dtpCheckOut_TextChanged);
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 125);
+            this.label3.Location = new System.Drawing.Point(6, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 3;
             this.label3.Text = "Phòng:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtPhoneNumber
-            // 
-            this.txtPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPhoneNumber.BorderColor = System.Drawing.Color.White;
-            this.txtPhoneNumber.Cursor = System.Windows.Forms.Cursors.No;
-            this.txtPhoneNumber.DefaultText = "";
-            this.txtPhoneNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPhoneNumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPhoneNumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhoneNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhoneNumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.ForeColor = System.Drawing.Color.Black;
-            this.txtPhoneNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(145, 106);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.PlaceholderText = "Sđt";
-            this.txtPhoneNumber.ReadOnly = true;
-            this.txtPhoneNumber.SelectedText = "";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(156, 24);
-            this.txtPhoneNumber.TabIndex = 7;
-            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
-            // 
-            // txtNgayNhan
-            // 
-            this.txtNgayNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNgayNhan.BorderColor = System.Drawing.Color.White;
-            this.txtNgayNhan.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtNgayNhan.DefaultText = "";
-            this.txtNgayNhan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtNgayNhan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtNgayNhan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNgayNhan.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtNgayNhan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNgayNhan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtNgayNhan.ForeColor = System.Drawing.Color.Black;
-            this.txtNgayNhan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNgayNhan.Location = new System.Drawing.Point(317, 71);
-            this.txtNgayNhan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtNgayNhan.Name = "txtNgayNhan";
-            this.txtNgayNhan.PlaceholderText = "Ngày nhân";
-            this.txtNgayNhan.ReadOnly = true;
-            this.txtNgayNhan.SelectedText = "";
-            this.txtNgayNhan.Size = new System.Drawing.Size(158, 25);
-            this.txtNgayNhan.TabIndex = 6;
-            this.txtNgayNhan.TextChanged += new System.EventHandler(this.dtpCheckIn_TextChanged);
             // 
             // label1
             // 
@@ -488,6 +413,7 @@
             // 
             // txtTimKiemDichVu
             // 
+            this.txtTimKiemDichVu.BackColor = System.Drawing.Color.Transparent;
             this.txtTimKiemDichVu.BorderRadius = 10;
             this.txtTimKiemDichVu.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTimKiemDichVu.DefaultText = "";
@@ -523,13 +449,13 @@
             this.txtCustomerName.Font = new System.Drawing.Font("Segoe UI", 10.8F);
             this.txtCustomerName.ForeColor = System.Drawing.Color.Black;
             this.txtCustomerName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCustomerName.Location = new System.Drawing.Point(6, 65);
+            this.txtCustomerName.Location = new System.Drawing.Point(13, 65);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.PlaceholderText = "Tên";
             this.txtCustomerName.ReadOnly = true;
             this.txtCustomerName.SelectedText = "";
-            this.txtCustomerName.Size = new System.Drawing.Size(144, 31);
+            this.txtCustomerName.Size = new System.Drawing.Size(137, 25);
             this.txtCustomerName.TabIndex = 4;
             this.txtCustomerName.TextChanged += new System.EventHandler(this.txtCustomerName_TextChanged);
             // 
@@ -558,6 +484,97 @@
             this.txtTenPhong.Size = new System.Drawing.Size(66, 28);
             this.txtTenPhong.TabIndex = 4;
             this.txtTenPhong.TextChanged += new System.EventHandler(this.txtTenPhong_TextChanged);
+            // 
+            // guna2Panel5
+            // 
+            this.guna2Panel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
+            this.guna2Panel5.BorderRadius = 10;
+            this.guna2Panel5.BorderThickness = 2;
+            this.guna2Panel5.Controls.Add(this.txtNgayNhan);
+            this.guna2Panel5.Controls.Add(this.txtNgayTra);
+            this.guna2Panel5.Controls.Add(this.txtPhoneNumber);
+            this.guna2Panel5.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Panel5.ForeColor = System.Drawing.Color.Transparent;
+            this.guna2Panel5.Location = new System.Drawing.Point(9, 64);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(491, 66);
+            this.guna2Panel5.TabIndex = 10;
+            // 
+            // txtNgayNhan
+            // 
+            this.txtNgayNhan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNgayNhan.BorderColor = System.Drawing.Color.White;
+            this.txtNgayNhan.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNgayNhan.DefaultText = "";
+            this.txtNgayNhan.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNgayNhan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNgayNhan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNgayNhan.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNgayNhan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNgayNhan.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNgayNhan.ForeColor = System.Drawing.Color.Black;
+            this.txtNgayNhan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNgayNhan.Location = new System.Drawing.Point(299, 4);
+            this.txtNgayNhan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNgayNhan.Name = "txtNgayNhan";
+            this.txtNgayNhan.PlaceholderText = "Ngày nhân";
+            this.txtNgayNhan.ReadOnly = true;
+            this.txtNgayNhan.SelectedText = "";
+            this.txtNgayNhan.Size = new System.Drawing.Size(158, 25);
+            this.txtNgayNhan.TabIndex = 6;
+            this.txtNgayNhan.TextChanged += new System.EventHandler(this.dtpCheckIn_TextChanged);
+            // 
+            // txtNgayTra
+            // 
+            this.txtNgayTra.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNgayTra.BorderColor = System.Drawing.Color.White;
+            this.txtNgayTra.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtNgayTra.DefaultText = "";
+            this.txtNgayTra.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtNgayTra.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtNgayTra.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNgayTra.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtNgayTra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNgayTra.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNgayTra.ForeColor = System.Drawing.Color.Black;
+            this.txtNgayTra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtNgayTra.Location = new System.Drawing.Point(308, 37);
+            this.txtNgayTra.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNgayTra.Name = "txtNgayTra";
+            this.txtNgayTra.PlaceholderText = "Ngày trả";
+            this.txtNgayTra.ReadOnly = true;
+            this.txtNgayTra.SelectedText = "";
+            this.txtNgayTra.Size = new System.Drawing.Size(158, 24);
+            this.txtNgayTra.TabIndex = 8;
+            this.txtNgayTra.TextChanged += new System.EventHandler(this.dtpCheckOut_TextChanged);
+            // 
+            // txtPhoneNumber
+            // 
+            this.txtPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPhoneNumber.BorderColor = System.Drawing.Color.White;
+            this.txtPhoneNumber.Cursor = System.Windows.Forms.Cursors.No;
+            this.txtPhoneNumber.DefaultText = "";
+            this.txtPhoneNumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPhoneNumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPhoneNumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPhoneNumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPhoneNumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNumber.ForeColor = System.Drawing.Color.Black;
+            this.txtPhoneNumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPhoneNumber.Location = new System.Drawing.Point(136, 34);
+            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.PlaceholderText = "Sđt";
+            this.txtPhoneNumber.ReadOnly = true;
+            this.txtPhoneNumber.SelectedText = "";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(156, 24);
+            this.txtPhoneNumber.TabIndex = 7;
+            this.txtPhoneNumber.TextChanged += new System.EventHandler(this.txtPhoneNumber_TextChanged);
             // 
             // txtHoaDon
             // 
@@ -752,6 +769,7 @@
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
+            this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -789,5 +807,6 @@
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TextBox txtHoaDon;
         private Guna.UI2.WinForms.Guna2Button btnDoanhThu;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
     }
 }
