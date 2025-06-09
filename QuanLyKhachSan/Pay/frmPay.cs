@@ -454,7 +454,7 @@ namespace QuanLyKhachSan
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            LoadDanhSachPhongAsync(0, 1);
+           // LoadDanhSachPhongAsync(0, 1);
             string searchText = txtSearch.Text.Trim().ToLower();
            
             

@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbFullRoom = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.txtVatTu = new Guna.UI2.WinForms.Guna2TextBox();
             this.progress = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbNghi = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lbHoaDon = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,13 +53,7 @@
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.lbFullRoom = new System.Windows.Forms.Label();
-            this.lbAllRoom = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbAllEmployee = new System.Windows.Forms.Label();
-            this.lbNghi = new System.Windows.Forms.Label();
-            this.lbHoaDon = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -72,8 +69,6 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.panel1);
-            this.guna2Panel1.Controls.Add(this.lbAllRoom);
             this.guna2Panel1.Controls.Add(this.lbFullRoom);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -82,6 +77,17 @@
             this.guna2Panel1.Size = new System.Drawing.Size(225, 115);
             this.guna2Panel1.TabIndex = 0;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // lbFullRoom
+            // 
+            this.lbFullRoom.AutoSize = true;
+            this.lbFullRoom.BackColor = System.Drawing.Color.Transparent;
+            this.lbFullRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFullRoom.Location = new System.Drawing.Point(95, 59);
+            this.lbFullRoom.Name = "lbFullRoom";
+            this.lbFullRoom.Size = new System.Drawing.Size(36, 38);
+            this.lbFullRoom.TabIndex = 1;
+            this.lbFullRoom.Text = "0";
             // 
             // label1
             // 
@@ -163,8 +169,6 @@
             this.guna2Panel3.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel3.BorderRadius = 10;
             this.guna2Panel3.BorderThickness = 1;
-            this.guna2Panel3.Controls.Add(this.panel2);
-            this.guna2Panel3.Controls.Add(this.lbAllEmployee);
             this.guna2Panel3.Controls.Add(this.lbNghi);
             this.guna2Panel3.Controls.Add(this.label3);
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -172,6 +176,18 @@
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(225, 115);
             this.guna2Panel3.TabIndex = 0;
+            // 
+            // lbNghi
+            // 
+            this.lbNghi.AutoSize = true;
+            this.lbNghi.BackColor = System.Drawing.Color.Transparent;
+            this.lbNghi.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNghi.Location = new System.Drawing.Point(95, 63);
+            this.lbNghi.Name = "lbNghi";
+            this.lbNghi.Size = new System.Drawing.Size(36, 38);
+            this.lbNghi.TabIndex = 4;
+            this.lbNghi.Text = "0";
+            this.lbNghi.Click += new System.EventHandler(this.lbNghi_Click);
             // 
             // label3
             // 
@@ -196,6 +212,17 @@
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(225, 115);
             this.guna2Panel4.TabIndex = 0;
+            // 
+            // lbHoaDon
+            // 
+            this.lbHoaDon.AutoSize = true;
+            this.lbHoaDon.BackColor = System.Drawing.Color.Transparent;
+            this.lbHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHoaDon.Location = new System.Drawing.Point(95, 52);
+            this.lbHoaDon.Name = "lbHoaDon";
+            this.lbHoaDon.Size = new System.Drawing.Size(36, 38);
+            this.lbHoaDon.TabIndex = 7;
+            this.lbHoaDon.Text = "0";
             // 
             // label4
             // 
@@ -297,12 +324,13 @@
             this.guna2Panel7.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel7.BorderRadius = 10;
             this.guna2Panel7.BorderThickness = 1;
+            this.guna2Panel7.Controls.Add(this.flowLayoutPanel1);
             this.guna2Panel7.Controls.Add(this.btnThongBao);
             this.guna2Panel7.Controls.Add(this.label6);
             this.guna2Panel7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel7.Location = new System.Drawing.Point(731, 13);
+            this.guna2Panel7.Location = new System.Drawing.Point(723, 13);
             this.guna2Panel7.Name = "guna2Panel7";
-            this.guna2Panel7.Size = new System.Drawing.Size(289, 392);
+            this.guna2Panel7.Size = new System.Drawing.Size(297, 392);
             this.guna2Panel7.TabIndex = 0;
             this.guna2Panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel7_Paint);
             // 
@@ -327,7 +355,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 12);
+            this.label6.Location = new System.Drawing.Point(3, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 25);
             this.label6.TabIndex = 0;
@@ -341,9 +369,9 @@
             this.guna2Panel8.Controls.Add(this.btnDoanhThu);
             this.guna2Panel8.Controls.Add(this.label7);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel8.Location = new System.Drawing.Point(731, 428);
+            this.guna2Panel8.Location = new System.Drawing.Point(723, 428);
             this.guna2Panel8.Name = "guna2Panel8";
-            this.guna2Panel8.Size = new System.Drawing.Size(289, 124);
+            this.guna2Panel8.Size = new System.Drawing.Size(297, 124);
             this.guna2Panel8.TabIndex = 0;
             // 
             // btnDoanhThu
@@ -367,82 +395,20 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 12);
+            this.label7.Location = new System.Drawing.Point(3, 12);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "Doanh thu";
             // 
-            // lbFullRoom
+            // flowLayoutPanel1
             // 
-            this.lbFullRoom.AutoSize = true;
-            this.lbFullRoom.BackColor = System.Drawing.Color.Transparent;
-            this.lbFullRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFullRoom.Location = new System.Drawing.Point(53, 62);
-            this.lbFullRoom.Name = "lbFullRoom";
-            this.lbFullRoom.Size = new System.Drawing.Size(37, 39);
-            this.lbFullRoom.TabIndex = 1;
-            this.lbFullRoom.Text = "0";
-            // 
-            // lbAllRoom
-            // 
-            this.lbAllRoom.AutoSize = true;
-            this.lbAllRoom.BackColor = System.Drawing.Color.Transparent;
-            this.lbAllRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAllRoom.Location = new System.Drawing.Point(134, 62);
-            this.lbAllRoom.Name = "lbAllRoom";
-            this.lbAllRoom.Size = new System.Drawing.Size(37, 39);
-            this.lbAllRoom.TabIndex = 2;
-            this.lbAllRoom.Text = "0";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Location = new System.Drawing.Point(102, 52);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 49);
-            this.panel1.TabIndex = 3;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel2.Location = new System.Drawing.Point(102, 53);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 49);
-            this.panel2.TabIndex = 6;
-            // 
-            // lbAllEmployee
-            // 
-            this.lbAllEmployee.AutoSize = true;
-            this.lbAllEmployee.BackColor = System.Drawing.Color.Transparent;
-            this.lbAllEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAllEmployee.Location = new System.Drawing.Point(134, 63);
-            this.lbAllEmployee.Name = "lbAllEmployee";
-            this.lbAllEmployee.Size = new System.Drawing.Size(37, 39);
-            this.lbAllEmployee.TabIndex = 5;
-            this.lbAllEmployee.Text = "0";
-            // 
-            // lbNghi
-            // 
-            this.lbNghi.AutoSize = true;
-            this.lbNghi.BackColor = System.Drawing.Color.Transparent;
-            this.lbNghi.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNghi.Location = new System.Drawing.Point(53, 63);
-            this.lbNghi.Name = "lbNghi";
-            this.lbNghi.Size = new System.Drawing.Size(37, 39);
-            this.lbNghi.TabIndex = 4;
-            this.lbNghi.Text = "0";
-            // 
-            // lbHoaDon
-            // 
-            this.lbHoaDon.AutoSize = true;
-            this.lbHoaDon.BackColor = System.Drawing.Color.Transparent;
-            this.lbHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHoaDon.Location = new System.Drawing.Point(84, 52);
-            this.lbHoaDon.Name = "lbHoaDon";
-            this.lbHoaDon.Size = new System.Drawing.Size(37, 39);
-            this.lbHoaDon.TabIndex = 7;
-            this.lbHoaDon.Text = "0";
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 49);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(291, 329);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // frmHome
             // 
@@ -504,12 +470,9 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button btnThongBao;
         private Guna.UI2.WinForms.Guna2Button btnDoanhThu;
-        private System.Windows.Forms.Label lbAllRoom;
         private System.Windows.Forms.Label lbFullRoom;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbAllEmployee;
         private System.Windows.Forms.Label lbNghi;
         private System.Windows.Forms.Label lbHoaDon;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

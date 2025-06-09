@@ -53,8 +53,9 @@ namespace QuanLyKhachSan
                 allRoom = reader["allRoom"].ToString();
             }
 
-            lbFullRoom.Text = fullRoom;
-            lbAllRoom.Text = allRoom;
+            lbFullRoom.Text = $"{fullRoom}/{allRoom}";
+            //fullRoom;
+            //lbAllRoom.Text = allRoom;
 
         }
 
@@ -82,8 +83,9 @@ namespace QuanLyKhachSan
                 allEmployee = reader["allEmployee"].ToString();
             }
 
-            lbNghi.Text = daNghi;
-            lbAllEmployee.Text = allEmployee;
+            lbNghi.Text = $"{daNghi}/{allEmployee}";
+                //daNghi;
+            //lbAllEmployee.Text = allEmployee;
 
         }
 
@@ -102,7 +104,34 @@ namespace QuanLyKhachSan
             }
         }
 
+        private void LoadThongBao()
+        {
 
+            string query = "";
+            query = $"SELECT * FROM ThongBao";
+            
+
+
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                flowLayoutPanel1.Controls.Clear();
+
+                while (reader.Read())
+                {
+                    var uc = new UsHome();
+                    uc.Name = reader["MaThongBao"].ToString();
+                    uc.NoiDung = reader["NoiDung"].ToString();
+                    
+
+                    flowLayoutPanel1.Controls.Add(uc);
+                }
+
+            }
+        }
 
 
         private void frmHome_Load(object sender, EventArgs e)
@@ -110,6 +139,7 @@ namespace QuanLyKhachSan
             statusRoom();
             statusEmployee();
             hoadon();
+            LoadThongBao();
         }
 
         private void guna2CircleProgressBar1_ValueChanged(object sender, EventArgs e)
@@ -144,6 +174,11 @@ namespace QuanLyKhachSan
         }
 
         private void guna2Panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbNghi_Click(object sender, EventArgs e)
         {
 
         }
