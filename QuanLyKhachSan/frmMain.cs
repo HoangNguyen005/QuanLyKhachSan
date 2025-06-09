@@ -67,9 +67,15 @@ namespace QuanLyKhachSan
      
         private void btnEmployee_Click(object sender, EventArgs e)
         {
-            handleActive(sender);
-
-            openChild(new frmImployee());
+            if (Global.AUTHORIZATION == "Admin")
+            {
+                handleActive(sender);
+                openChild(new frmClient());
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập trang này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         
         private void btnBooking_Click(object sender, EventArgs e)
@@ -82,9 +88,10 @@ namespace QuanLyKhachSan
 
         private void btnClient_Click(object sender, EventArgs e)
         {
-            handleActive(sender);
-
-            openChild(new frmClient());
+            
+                handleActive(sender);
+                openChild(new frmClient());
+            
         }
 
         private void btnPay_Click(object sender, EventArgs e)
@@ -121,12 +128,16 @@ namespace QuanLyKhachSan
 
         private void roomManage_Click(object sender, EventArgs e)
         {
-            handleActive(sender);
-            //Location
 
-            //currentActive.BackColor = Color.Black;
-
-            openChild(new frmRoomManage());
+            if (Global.AUTHORIZATION == "Admin")
+            {
+                handleActive(sender);      
+                openChild(new frmRoomManage());           
+            }
+            else
+            {
+                MessageBox.Show("Bạn không có quyền truy cập trang này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
