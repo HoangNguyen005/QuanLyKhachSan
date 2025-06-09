@@ -161,6 +161,12 @@
     <Compile Include="Pay\UsPay.Designer.cs">
       <DependentUpon>UsPay.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UsHome.Designer.cs">
+      <DependentUpon>UsHome.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmBookingRoom.resx">
       <DependentUpon>frmBookingRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pay\UsPay.resx">
       <DependentUpon>UsPay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsHome.resx">
+      <DependentUpon>UsHome.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

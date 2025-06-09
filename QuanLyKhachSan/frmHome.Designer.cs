@@ -53,6 +53,7 @@
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -323,12 +324,13 @@
             this.guna2Panel7.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel7.BorderRadius = 10;
             this.guna2Panel7.BorderThickness = 1;
+            this.guna2Panel7.Controls.Add(this.flowLayoutPanel1);
             this.guna2Panel7.Controls.Add(this.btnThongBao);
             this.guna2Panel7.Controls.Add(this.label6);
             this.guna2Panel7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel7.Location = new System.Drawing.Point(731, 13);
+            this.guna2Panel7.Location = new System.Drawing.Point(723, 13);
             this.guna2Panel7.Name = "guna2Panel7";
-            this.guna2Panel7.Size = new System.Drawing.Size(289, 392);
+            this.guna2Panel7.Size = new System.Drawing.Size(297, 392);
             this.guna2Panel7.TabIndex = 0;
             this.guna2Panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel7_Paint);
             // 
@@ -353,7 +355,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 12);
+            this.label6.Location = new System.Drawing.Point(3, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 25);
             this.label6.TabIndex = 0;
@@ -367,9 +369,9 @@
             this.guna2Panel8.Controls.Add(this.btnDoanhThu);
             this.guna2Panel8.Controls.Add(this.label7);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel8.Location = new System.Drawing.Point(731, 428);
+            this.guna2Panel8.Location = new System.Drawing.Point(723, 428);
             this.guna2Panel8.Name = "guna2Panel8";
-            this.guna2Panel8.Size = new System.Drawing.Size(289, 124);
+            this.guna2Panel8.Size = new System.Drawing.Size(297, 124);
             this.guna2Panel8.TabIndex = 0;
             // 
             // btnDoanhThu
@@ -393,11 +395,20 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 12);
+            this.label7.Location = new System.Drawing.Point(3, 12);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "Doanh thu";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 49);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(291, 329);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // frmHome
             // 
@@ -462,5 +473,6 @@
         private System.Windows.Forms.Label lbFullRoom;
         private System.Windows.Forms.Label lbNghi;
         private System.Windows.Forms.Label lbHoaDon;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
