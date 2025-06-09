@@ -53,8 +53,9 @@ namespace QuanLyKhachSan
                 allRoom = reader["allRoom"].ToString();
             }
 
-            lbFullRoom.Text = fullRoom;
-            lbAllRoom.Text = allRoom;
+            lbFullRoom.Text = $"{fullRoom}/{allRoom}";
+            //fullRoom;
+            //lbAllRoom.Text = allRoom;
 
         }
 
@@ -82,8 +83,9 @@ namespace QuanLyKhachSan
                 allEmployee = reader["allEmployee"].ToString();
             }
 
-            lbNghi.Text = daNghi;
-            lbAllEmployee.Text = allEmployee;
+            lbNghi.Text = $"{daNghi}/{allEmployee}";
+                //daNghi;
+            //lbAllEmployee.Text = allEmployee;
 
         }
 
@@ -144,6 +146,11 @@ namespace QuanLyKhachSan
         }
 
         private void guna2Panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lbNghi_Click(object sender, EventArgs e)
         {
 
         }
