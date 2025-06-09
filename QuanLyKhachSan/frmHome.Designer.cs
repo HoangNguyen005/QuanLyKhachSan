@@ -48,12 +48,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.guna2Shapes1 = new Guna.UI2.WinForms.Guna2Shapes();
             this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -328,11 +328,20 @@
             this.guna2Panel7.Controls.Add(this.btnThongBao);
             this.guna2Panel7.Controls.Add(this.label6);
             this.guna2Panel7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel7.Location = new System.Drawing.Point(723, 13);
+            this.guna2Panel7.Location = new System.Drawing.Point(723, 55);
             this.guna2Panel7.Name = "guna2Panel7";
             this.guna2Panel7.Size = new System.Drawing.Size(297, 392);
             this.guna2Panel7.TabIndex = 0;
             this.guna2Panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel7_Paint);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 49);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(291, 329);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btnThongBao
             // 
@@ -369,7 +378,7 @@
             this.guna2Panel8.Controls.Add(this.btnDoanhThu);
             this.guna2Panel8.Controls.Add(this.label7);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel8.Location = new System.Drawing.Point(723, 428);
+            this.guna2Panel8.Location = new System.Drawing.Point(723, 490);
             this.guna2Panel8.Name = "guna2Panel8";
             this.guna2Panel8.Size = new System.Drawing.Size(297, 124);
             this.guna2Panel8.TabIndex = 0;
@@ -400,15 +409,6 @@
             this.label7.Size = new System.Drawing.Size(102, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "Doanh thu";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 49);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(291, 329);
-            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // frmHome
             // 
