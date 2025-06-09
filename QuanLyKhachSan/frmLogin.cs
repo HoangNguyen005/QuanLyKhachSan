@@ -57,6 +57,7 @@ namespace QuanLyKhachSan
                 {
                     Form main = new frmMain();
                     main.ShowDialog();
+                    this.Close();
                 } else
                 {
                     MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
