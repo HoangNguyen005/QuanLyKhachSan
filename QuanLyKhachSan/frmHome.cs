@@ -19,6 +19,7 @@ namespace QuanLyKhachSan
         private SqlConnection mySqlConnection;
         //định nghĩa đối tượng truy vấn/cập nhật dữ liệu
         private SqlCommand mySqlCommand;
+        
         public frmHome()
         {
             InitializeComponent();
@@ -56,6 +57,7 @@ namespace QuanLyKhachSan
             lbFullRoom.Text = $"{fullRoom}/{allRoom}";
             //fullRoom;
             //lbAllRoom.Text = allRoom;
+            lbname.Text=  Global.AUTHORIZATION;
 
         }
 
@@ -181,6 +183,11 @@ namespace QuanLyKhachSan
         private void lbNghi_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lbDangXuat_Click(object sender, EventArgs e)
+        {
+            ((frmMain)this.ParentForm).Close1();
         }
     }
 }

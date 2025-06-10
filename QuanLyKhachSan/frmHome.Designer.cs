@@ -54,6 +54,9 @@
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.lbname = new System.Windows.Forms.Label();
+            this.lbDangXuat = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -267,7 +270,7 @@
             this.guna2Panel6.Controls.Add(this.label8);
             this.guna2Panel6.Controls.Add(this.guna2Shapes1);
             this.guna2Panel6.FillColor = System.Drawing.Color.White;
-            this.guna2Panel6.Location = new System.Drawing.Point(262, 12);
+            this.guna2Panel6.Location = new System.Drawing.Point(254, 12);
             this.guna2Panel6.Name = "guna2Panel6";
             this.guna2Panel6.Size = new System.Drawing.Size(443, 669);
             this.guna2Panel6.TabIndex = 1;
@@ -298,6 +301,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(18, 12);
             this.label8.Name = "label8";
@@ -328,9 +332,9 @@
             this.guna2Panel7.Controls.Add(this.btnThongBao);
             this.guna2Panel7.Controls.Add(this.label6);
             this.guna2Panel7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel7.Location = new System.Drawing.Point(723, 55);
+            this.guna2Panel7.Location = new System.Drawing.Point(715, 53);
             this.guna2Panel7.Name = "guna2Panel7";
-            this.guna2Panel7.Size = new System.Drawing.Size(297, 392);
+            this.guna2Panel7.Size = new System.Drawing.Size(305, 392);
             this.guna2Panel7.TabIndex = 0;
             this.guna2Panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel7_Paint);
             // 
@@ -340,7 +344,7 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 49);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(291, 329);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(299, 340);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btnThongBao
@@ -352,7 +356,7 @@
             this.btnThongBao.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.btnThongBao.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnThongBao.ForeColor = System.Drawing.Color.Black;
-            this.btnThongBao.Location = new System.Drawing.Point(235, 9);
+            this.btnThongBao.Location = new System.Drawing.Point(251, 9);
             this.btnThongBao.Name = "btnThongBao";
             this.btnThongBao.Size = new System.Drawing.Size(51, 27);
             this.btnThongBao.TabIndex = 1;
@@ -364,7 +368,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 11);
+            this.label6.Location = new System.Drawing.Point(8, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 25);
             this.label6.TabIndex = 0;
@@ -378,9 +382,9 @@
             this.guna2Panel8.Controls.Add(this.btnDoanhThu);
             this.guna2Panel8.Controls.Add(this.label7);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.guna2Panel8.Location = new System.Drawing.Point(723, 490);
+            this.guna2Panel8.Location = new System.Drawing.Point(715, 463);
             this.guna2Panel8.Name = "guna2Panel8";
-            this.guna2Panel8.Size = new System.Drawing.Size(297, 124);
+            this.guna2Panel8.Size = new System.Drawing.Size(302, 218);
             this.guna2Panel8.TabIndex = 0;
             // 
             // btnDoanhThu
@@ -404,17 +408,59 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 12);
+            this.label7.Location = new System.Drawing.Point(5, 12);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(102, 25);
             this.label7.TabIndex = 0;
             this.label7.Text = "Doanh thu";
+            // 
+            // guna2CircleButton1
+            // 
+            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2CircleButton1.Location = new System.Drawing.Point(980, 7);
+            this.guna2CircleButton1.Name = "guna2CircleButton1";
+            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CircleButton1.Size = new System.Drawing.Size(40, 40);
+            this.guna2CircleButton1.TabIndex = 2;
+            this.guna2CircleButton1.Text = "guna2CircleButton1";
+            // 
+            // lbname
+            // 
+            this.lbname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbname.AutoSize = true;
+            this.lbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbname.Location = new System.Drawing.Point(928, 20);
+            this.lbname.Name = "lbname";
+            this.lbname.Size = new System.Drawing.Size(53, 20);
+            this.lbname.TabIndex = 3;
+            this.lbname.Text = "label9";
+            // 
+            // lbDangXuat
+            // 
+            this.lbDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDangXuat.AutoSize = true;
+            this.lbDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDangXuat.ForeColor = System.Drawing.Color.Red;
+            this.lbDangXuat.Location = new System.Drawing.Point(840, 20);
+            this.lbDangXuat.Name = "lbDangXuat";
+            this.lbDangXuat.Size = new System.Drawing.Size(84, 20);
+            this.lbDangXuat.TabIndex = 3;
+            this.lbDangXuat.Text = "Đăng xuất";
+            this.lbDangXuat.Click += new System.EventHandler(this.lbDangXuat_Click);
             // 
             // frmHome
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1032, 703);
+            this.Controls.Add(this.lbDangXuat);
+            this.Controls.Add(this.lbname);
+            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.guna2Panel6);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel5);
@@ -443,6 +489,7 @@
             this.guna2Panel8.ResumeLayout(false);
             this.guna2Panel8.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -474,5 +521,8 @@
         private System.Windows.Forms.Label lbNghi;
         private System.Windows.Forms.Label lbHoaDon;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+        private System.Windows.Forms.Label lbname;
+        private System.Windows.Forms.Label lbDangXuat;
     }
 }
