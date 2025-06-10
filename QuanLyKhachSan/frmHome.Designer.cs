@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbFullRoom = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtVatTu = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lbVatTu = new System.Windows.Forms.Label();
             this.progress = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
@@ -54,9 +57,10 @@
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.lbname = new System.Windows.Forms.Label();
             this.lbDangXuat = new System.Windows.Forms.Label();
+            this.guna2GradientCircleButton1 = new Guna.UI2.WinForms.Guna2GradientCircleButton();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -65,6 +69,7 @@
             this.guna2Panel6.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             this.guna2Panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -108,7 +113,7 @@
             this.guna2Panel2.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel2.BorderRadius = 10;
             this.guna2Panel2.BorderThickness = 1;
-            this.guna2Panel2.Controls.Add(this.txtVatTu);
+            this.guna2Panel2.Controls.Add(this.lbVatTu);
             this.guna2Panel2.Controls.Add(this.progress);
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -117,30 +122,23 @@
             this.guna2Panel2.Size = new System.Drawing.Size(225, 115);
             this.guna2Panel2.TabIndex = 0;
             // 
-            // txtVatTu
+            // lbVatTu
             // 
-            this.txtVatTu.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtVatTu.DefaultText = "";
-            this.txtVatTu.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtVatTu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtVatTu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtVatTu.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtVatTu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtVatTu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVatTu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtVatTu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtVatTu.Location = new System.Drawing.Point(32, 41);
-            this.txtVatTu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtVatTu.Name = "txtVatTu";
-            this.txtVatTu.PlaceholderText = "";
-            this.txtVatTu.SelectedText = "";
-            this.txtVatTu.Size = new System.Drawing.Size(66, 48);
-            this.txtVatTu.TabIndex = 1;
+            this.lbVatTu.AutoSize = true;
+            this.lbVatTu.BackColor = System.Drawing.Color.Transparent;
+            this.lbVatTu.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVatTu.Location = new System.Drawing.Point(45, 47);
+            this.lbVatTu.Name = "lbVatTu";
+            this.lbVatTu.Size = new System.Drawing.Size(36, 38);
+            this.lbVatTu.TabIndex = 1;
+            this.lbVatTu.Text = "0";
+            this.lbVatTu.Click += new System.EventHandler(this.lbVatTu_Click);
             // 
             // progress
             // 
             this.progress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.progress.FillColor = System.Drawing.Color.Silver;
+            this.progress.FillColor = System.Drawing.Color.White;
+            this.progress.FillThickness = 18;
             this.progress.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.progress.ForeColor = System.Drawing.Color.White;
             this.progress.Location = new System.Drawing.Point(118, 20);
@@ -149,10 +147,11 @@
             this.progress.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.Solid;
             this.progress.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.progress.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.progress.ProgressThickness = 18;
             this.progress.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.progress.Size = new System.Drawing.Size(82, 82);
             this.progress.TabIndex = 1;
-            this.progress.Text = "guna2CircleProgressBar1";
+            this.progress.Text = "CircleVatTu";
             this.progress.Value = 50;
             this.progress.ValueChanged += new System.EventHandler(this.guna2CircleProgressBar1_ValueChanged);
             // 
@@ -379,6 +378,7 @@
             this.guna2Panel8.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel8.BorderRadius = 10;
             this.guna2Panel8.BorderThickness = 1;
+            this.guna2Panel8.Controls.Add(this.chart1);
             this.guna2Panel8.Controls.Add(this.btnDoanhThu);
             this.guna2Panel8.Controls.Add(this.label7);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -414,21 +414,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Doanh thu";
             // 
-            // guna2CircleButton1
-            // 
-            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(980, 7);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(40, 40);
-            this.guna2CircleButton1.TabIndex = 2;
-            this.guna2CircleButton1.Text = "guna2CircleButton1";
-            // 
             // lbname
             // 
             this.lbname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -436,9 +421,9 @@
             this.lbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbname.Location = new System.Drawing.Point(928, 20);
             this.lbname.Name = "lbname";
-            this.lbname.Size = new System.Drawing.Size(53, 20);
+            this.lbname.Size = new System.Drawing.Size(37, 20);
             this.lbname.TabIndex = 3;
-            this.lbname.Text = "label9";
+            this.lbname.Text = "Tên";
             // 
             // lbDangXuat
             // 
@@ -453,14 +438,48 @@
             this.lbDangXuat.Text = "Đăng xuất";
             this.lbDangXuat.Click += new System.EventHandler(this.lbDangXuat_Click);
             // 
+            // guna2GradientCircleButton1
+            // 
+            this.guna2GradientCircleButton1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2GradientCircleButton1.BorderThickness = 1;
+            this.guna2GradientCircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientCircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GradientCircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientCircleButton1.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2GradientCircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2GradientCircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GradientCircleButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2GradientCircleButton1.Image = global::QuanLyKhachSan.Properties.Resources.istockphoto_1223671392_612x612;
+            this.guna2GradientCircleButton1.Location = new System.Drawing.Point(977, 9);
+            this.guna2GradientCircleButton1.Name = "guna2GradientCircleButton1";
+            this.guna2GradientCircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2GradientCircleButton1.Size = new System.Drawing.Size(40, 40);
+            this.guna2GradientCircleButton1.TabIndex = 4;
+            // 
+            // chart1
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(2, 43);
+            this.chart1.Name = "chart1";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
+            this.chart1.Size = new System.Drawing.Size(300, 172);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chartDoanhThu";
+            // 
             // frmHome
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1032, 703);
+            this.Controls.Add(this.guna2GradientCircleButton1);
             this.Controls.Add(this.lbDangXuat);
             this.Controls.Add(this.lbname);
-            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.guna2Panel6);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel5);
@@ -488,6 +507,7 @@
             this.guna2Panel7.PerformLayout();
             this.guna2Panel8.ResumeLayout(false);
             this.guna2Panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,7 +533,6 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2Shapes guna2Shapes1;
         private System.Windows.Forms.Label label8;
-        private Guna.UI2.WinForms.Guna2TextBox txtVatTu;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button btnThongBao;
         private Guna.UI2.WinForms.Guna2Button btnDoanhThu;
@@ -521,8 +540,10 @@
         private System.Windows.Forms.Label lbNghi;
         private System.Windows.Forms.Label lbHoaDon;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private System.Windows.Forms.Label lbname;
         private System.Windows.Forms.Label lbDangXuat;
+        private Guna.UI2.WinForms.Guna2GradientCircleButton guna2GradientCircleButton1;
+        private System.Windows.Forms.Label lbVatTu;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

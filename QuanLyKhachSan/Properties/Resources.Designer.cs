@@ -63,19 +63,9 @@ namespace QuanLyKhachSan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap loading {
+        internal static System.Drawing.Bitmap istockphoto_1223671392_612x612 {
             get {
-                object obj = ResourceManager.GetObject("loading", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap quet_the {
-            get {
-                object obj = ResourceManager.GetObject("quet-the", resourceCulture);
+                object obj = ResourceManager.GetObject("istockphoto-1223671392-612x612", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
