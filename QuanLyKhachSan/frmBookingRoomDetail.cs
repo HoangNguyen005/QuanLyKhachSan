@@ -195,5 +195,10 @@ namespace QuanLyKhachSan
         {
 
         }
+
+        private void msgErrorIsNotNumber_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
