@@ -40,7 +40,7 @@
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.Controls.Add(this.lbNoiDung);
             this.guna2Panel1.Controls.Add(this.lbName);
-            this.guna2Panel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.guna2Panel1.FillColor = System.Drawing.Color.White;
             this.guna2Panel1.Location = new System.Drawing.Point(2, 3);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(268, 54);
@@ -50,7 +50,7 @@
             // lbNoiDung
             // 
             this.lbNoiDung.AutoSize = true;
-            this.lbNoiDung.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.lbNoiDung.BackColor = System.Drawing.Color.White;
             this.lbNoiDung.Location = new System.Drawing.Point(3, 26);
             this.lbNoiDung.Name = "lbNoiDung";
             this.lbNoiDung.Size = new System.Drawing.Size(19, 16);
@@ -61,7 +61,7 @@
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.lbName.BackColor = System.Drawing.Color.White;
             this.lbName.Location = new System.Drawing.Point(3, 10);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(31, 16);
