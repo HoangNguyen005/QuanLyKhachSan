@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKhachSan.Pay;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -244,7 +245,8 @@ ORDER BY Thang";
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-
+            Form DoanhThu = new frmDoanhThu();
+            DoanhThu.ShowDialog();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

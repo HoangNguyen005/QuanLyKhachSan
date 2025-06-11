@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DichVu\frmDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DichVu\frmDichVu.Designer.cs">
+      <DependentUpon>frmDichVu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBookingRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <Compile Include="UsHome.Designer.cs">
       <DependentUpon>UsHome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DichVu\frmDichVu.resx">
+      <DependentUpon>frmDichVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBookingRoom.resx">
       <DependentUpon>frmBookingRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +268,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quaylai.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Them.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Them1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TimKiem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

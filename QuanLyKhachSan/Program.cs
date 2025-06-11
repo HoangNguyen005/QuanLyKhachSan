@@ -1,4 +1,5 @@
 ﻿using Myproject1;
+using QuanLyKhachSan.DichVu;
 using QuanLyKhachSan.Pay;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,8 @@ namespace QuanLyKhachSan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            
+            Application.Run(new frmDichVu());
         }
     }
 }

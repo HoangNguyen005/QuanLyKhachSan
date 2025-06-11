@@ -13,7 +13,7 @@ using QuanLyKhachSan.Pay;
 
 namespace QuanLyKhachSan
 {
-    public partial class frmPay: Form
+    public partial class frmPay : Form
     {
         //khai báo xâu kết nối tới CSDL
         private string conStr = "Data Source=(local);Initial Catalog=QuanLyKhachSan;Integrated Security=True";
@@ -21,23 +21,24 @@ namespace QuanLyKhachSan
         //private SqlConnection mySqlConnection;
         //định nghĩa đối tượng truy vấn/cập nhật dữ liệu
         //private SqlCommand mySqlCommand;
-       // private SqlDataAdapter mySqlDataAdapter;
-       // private SqlCommandBuilder mySqlCommandBuilder;
+        // private SqlDataAdapter mySqlDataAdapter;
+        // private SqlCommandBuilder mySqlCommandBuilder;
         //Khai báo đối tượng để lưu dữ liệu của bảng Customer trên form
-       // private DataTable dtCustomer;
+        // private DataTable dtCustomer;
         //khai báo biến để kiểm tra đã <thêm mới> hay sửa
         private bool modeNew;
 
         private string category = "";
         private string status = "";
         private string floor = "";
-        private int  mmahoadon;
+        private int mmahoadon;
 
         public frmPay(int i)
         {
             InitializeComponent();
-           // int phong=Phong;
-           if (i == 1) LoiGoi();
+            guna2Panel2.Size = new Size(1016, 645);
+            // int phong=Phong;
+            if (i == 1) LoiGoi();
         }
         private void LoiGoi()
         {
@@ -53,11 +54,11 @@ namespace QuanLyKhachSan
 
 
 
-        private async void LoadDanhSachPhongAsync(int CheDo,int Trangthai)
+        private async void LoadDanhSachPhongAsync(int CheDo, int Trangthai)
         {
             string query = "";
 
-            if (((txtSearch.Text == "") && (CheDo == 0))||(Trangthai==1))//Tìm mặc định
+            if (((txtSearch.Text == "") && (CheDo == 0)) || (Trangthai == 1))//Tìm mặc định
             {
                 query = "SELECT p.* , ttp.TrangThai FROM Phong p join TrangThaiPhong ttp on p.MaPhong=ttp.MaPhong";
             }
@@ -112,7 +113,7 @@ namespace QuanLyKhachSan
             }
 
             flowLayoutPanel1.ResumeLayout();
-           // lblStatus.Text = $"Đã tải {danhSachPhong.Count} phòng.";
+            // lblStatus.Text = $"Đã tải {danhSachPhong.Count} phòng.";
         }
 
         private void LoadDanhSachDichVu()
@@ -120,10 +121,10 @@ namespace QuanLyKhachSan
             flowLayoutPanel1.Controls.Clear();
             string query = "";
 
-           // if (txtTimKiemDichVu.Text == "")
+            // if (txtTimKiemDichVu.Text == "")
             //{
-                query = "SELECT dv.MaDichVu,dv.TenDichVu,dv.DonGia from DichVu dv  ";
-           // }
+            query = "SELECT dv.MaDichVu,dv.TenDichVu,dv.DonGia from DichVu dv  ";
+            // }
 
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -141,11 +142,6 @@ namespace QuanLyKhachSan
                     us.DonGia = reader["DonGia"].ToString();
 
                     flowLayoutPanel1.Controls.Add(us);
-                    //Màu buttom
-                    btnDichVu.FillColor = Color.White;
-                    btnPhong.FillColor = Color.Gray;
-                    btnDichVu.ForeColor = Color.Black;
-                    btnPhong.ForeColor = Color.White;
                 }
                 conn.Close();
             }
@@ -153,17 +149,17 @@ namespace QuanLyKhachSan
 
         private void frmPay_Load(object sender, EventArgs e)
         {
-            LoadDanhSachPhongAsync(0,0);
+            LoadDanhSachPhongAsync(0, 0);
         }
         //table dung chung cho
-       // private DataTable dt;
+        // private DataTable dt;
 
         public void LoadDataPhong()
         {
             using (SqlConnection conn = new SqlConnection(conStr))
             {
                 conn.Open();
-                string sql = $"SELECT p.* FROM Phong p  where p.MaPhong = {Global.ROOM_CODE}";
+                string sql = $"SELECT p.MaPhong,p.LoaiPhong,p.GiaPhong FROM Phong p  where p.MaPhong = {Global.ROOM_CODE}";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -177,7 +173,7 @@ namespace QuanLyKhachSan
 
                     }
                 }
-                conn.Close ();
+                conn.Close();
             }
         }
 
@@ -215,20 +211,22 @@ namespace QuanLyKhachSan
                         }
                         if (dt.Rows.Count > 0 && dt.Rows[0]["MoTa"].ToString() == "R")
                         {
-
-                            txtCustomerName.Text = dt.Rows[0]["HoTen"].ToString();
-                            txtPhoneNumber.Text = dt.Rows[0]["SoDienThoai"].ToString();
-                            txtIDCard.Text = dt.Rows[0]["CMND_CCCD"].ToString();
-                            txtTenPhong.Text = dt.Rows[0]["MaPhong"].ToString();
-                            txtHoaDon.Text = dt.Rows[0]["MaHoaDon"].ToString();
-                            txtNgayNhan.Text = dt.Rows[0]["NgayNhan"].ToString();
-                            txtNgayTra.Text = dt.Rows[0]["NgayTra"].ToString();
+                            guna2Panel2.Size = new Size(506, 645);
+                            guna2Panel3.Visible = true;
+                            txtCustomerName.Text = $"Tên: {dt.Rows[0]["HoTen"].ToString()}";
+                            txtPhoneNumber.Text = $"SĐT: {dt.Rows[0]["SoDienThoai"].ToString()}";
+                            txtIDCard.Text = $"CCCD: {dt.Rows[0]["CMND_CCCD"].ToString()}";
+                            txtTenPhong.Text = $"Phòng:{dt.Rows[0]["MaPhong"].ToString()}";
+                            txtHoaDon.Text = $"HĐ{dt.Rows[0]["MaHoaDon"].ToString()}";
+                            txtNgayNhan.Text = $"Ngày nhận:{dt.Rows[0]["NgayNhan"].ToString()}";
+                            txtNgayTra.Text = $"Ngày trả:{dt.Rows[0]["NgayTra"].ToString()}";
 
                             //loadTongTien();
                             loadDichVu();
                             btnThanhToan.Enabled = true;
                             btmNhanPhong.Enabled = false;
                             btnThanhToan.Text = "Thanh toán";
+
 
                         }
                         else
@@ -243,7 +241,8 @@ namespace QuanLyKhachSan
                             txtNgayTra.Text = "";
                             guna2DataGridView2.DataSource = null;
                             btnThanhToan.Enabled = false;
-                            if (mmahoadon == 0) { 
+                            if (mmahoadon == 0)
+                            {
                                 btmNhanPhong.Enabled = false;
                             }
                             else
@@ -254,7 +253,7 @@ namespace QuanLyKhachSan
 
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -290,11 +289,11 @@ namespace QuanLyKhachSan
                     if (dt.Rows.Count > 0)
                     {
                         decimal tongTien = Convert.ToDecimal(dt.Rows[0]["TongTien"]);
-                        txtTongTien.Text = tongTien.ToString("N0");
+                        txtTongTien.Text = $"Tổng:{tongTien.ToString("N0")}Đ";
                         MaHoaDonn = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
                         btnThanhToan.Enabled = true;
-                        btnThanhToan.FillColor = Color. ForestGreen;
-                        btnThanhToan.ForeColor = Color. White;
+                        btnThanhToan.FillColor = Color.ForestGreen;
+                        btnThanhToan.ForeColor = Color.White;
 
                     }
                     else
@@ -327,7 +326,7 @@ namespace QuanLyKhachSan
                         DataTable dt = new DataTable();
                         dt.Load(reader);
 
-                        if (dt.Rows.Count > 0 && txtCustomerName.Text!="" )
+                        if (dt.Rows.Count > 0 && txtCustomerName.Text != "")
                         {
                             int maHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
                             int maDichVu = Global.MaDichVu;// Giả sử label chứa mã dịch vụ
@@ -394,7 +393,7 @@ namespace QuanLyKhachSan
 
                     }
                 }
-                conn.Close ();
+                conn.Close();
             }
         }
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
@@ -404,61 +403,54 @@ namespace QuanLyKhachSan
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            
-                using (SqlConnection conn = new SqlConnection(conStr))
+
+            using (SqlConnection conn = new SqlConnection(conStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_CapNhatDaThanhToan", conn))
                 {
-                    using (SqlCommand cmd = new SqlCommand("sp_CapNhatDaThanhToan", conn))
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaHoaDon", MaHoaDonn);
+
+                    try
                     {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@MaHoaDon", MaHoaDonn);
+                        conn.Open();
+                        MessageBox.Show("Chắc chắn thanh toán đơn hàng này không! ", "Thông báo", MessageBoxButtons.YesNo);
 
-                        try
-                        {
-                            conn.Open();
-                            MessageBox.Show("Chắc chắn thanh toán đơn hàng này không! ", "Thông báo", MessageBoxButtons.YesNo);
+                        cmd.ExecuteNonQuery();
+                        frmHoaDon hoaDon = new frmHoaDon(MaHoaDonn);
+                        hoaDon.ShowDialog();
+                        LoadDanhSachPhongAsync(0, 0);
+                        loadDichVu();
+                        LoadUse();
+                        MessageBox.Show("Thanh toán thành công!");
+                        conn.Close();
 
-                            cmd.ExecuteNonQuery();
-                            frmHoaDon hoaDon = new frmHoaDon(MaHoaDonn);
-                            hoaDon.ShowDialog();
-                            LoadDanhSachPhongAsync(0,0);
-                            loadDichVu();
-                            LoadUse();
-                            MessageBox.Show("Thanh toán thành công!");
-                            conn.Close();
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi khi xác nhận thanh toán: " + ex.Message);
-                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi khi xác nhận thanh toán: " + ex.Message);
                     }
                 }
             }
-        
+        }
+
 
         private void btnPhong_Click(object sender, EventArgs e)
         {
             flowLayoutPanel1.Controls.Clear();
-            LoadDanhSachPhongAsync(0,0);
+            LoadDanhSachPhongAsync(0, 0);
+            btnPhong.Size = new Size(105, 46);
         }
 
-        private void btnDichVu_Click(object sender, EventArgs e)
-        {
-            if (txtCustomerName.Text != null)
-            {
-                flowLayoutPanel1.Controls.Clear();
-                LoadDanhSachDichVu();
 
-            }
-        }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-           // LoadDanhSachPhongAsync(0, 1);
+            // LoadDanhSachPhongAsync(0, 1);
             string searchText = txtSearch.Text.Trim().ToLower();
-           
-            
-            
+
+
+
             foreach (System.Windows.Forms.Control ctrl in flowLayoutPanel1.Controls)
             {
                 if (ctrl is UsPay room)
@@ -478,7 +470,7 @@ namespace QuanLyKhachSan
                     }
                 }
             }
-           // txtTimKiemDichVu.Text = "";
+            // txtTimKiemDichVu.Text = "";
         }
 
         private void btnShearch_Click(object sender, EventArgs e)
@@ -489,17 +481,17 @@ namespace QuanLyKhachSan
         private void btnTatCa_Click(object sender, EventArgs e)
         {
             txtSearch.Text = "";
-            LoadDanhSachPhongAsync(0,0);
+            LoadDanhSachPhongAsync(0, 0);
         }
 
         private void btnSuDung_Click(object sender, EventArgs e)
         {
-            LoadDanhSachPhongAsync(1,0);
+            LoadDanhSachPhongAsync(1, 0);
         }
 
         private void BtnChuaSuDung_Click(object sender, EventArgs e)
         {
-            LoadDanhSachPhongAsync(2,0);
+            LoadDanhSachPhongAsync(2, 0);
         }
 
         private void txtTenPhong_TextChanged(object sender, EventArgs e)
@@ -511,14 +503,14 @@ namespace QuanLyKhachSan
         {
             LoadDanhSachDichVu();
             string searchText = txtTimKiemDichVu.Text.Trim().ToLower();
-            
-            
-            
+
+
+
             foreach (System.Windows.Forms.Control ctrl in flowLayoutPanel1.Controls)
             {
                 if (ctrl is UsDichVuPay roomm)
                 {
-                    
+
                     // Giả sử tìm theo Mã phòng hoặc Loại phòng
                     string MaDichVu = roomm.MaDichVu.ToLower();
                     string TenDichVu = roomm.TenDichVu.ToLower();
@@ -526,7 +518,7 @@ namespace QuanLyKhachSan
                     // Kiểm tra nếu chuỗi nhập vào có chứa MaPhong hoặc LoaiPhong
                     if (MaDichVu.Contains(searchText) || TenDichVu.Contains(searchText))
                     {
-                        
+
                         roomm.Visible = true; // Hiện phòng
                     }
                     else
@@ -581,7 +573,7 @@ namespace QuanLyKhachSan
         private void txtTongTien_TextChanged(object sender, EventArgs e)
         {
             // Tính kích thước văn bản
-           // Size size = TextRenderer.MeasureText(txtTongTien.Text, txtTongTien.Font);
+            // Size size = TextRenderer.MeasureText(txtTongTien.Text, txtTongTien.Font);
 
             // Cập nhật chiều rộng (thêm padding nếu cần)
             //txtTongTien.Width = size.Width + 15;
@@ -638,6 +630,19 @@ namespace QuanLyKhachSan
                     MessageBox.Show("Lỗi khi cập nhật nhận phòng: " + ex.Message);
                 }
             }
+        }
+
+        private void btnDichVu_Click_1(object sender, EventArgs e)
+        {
+
+            if (txtCustomerName.Text != null)
+            {
+                flowLayoutPanel1.Controls.Clear();
+                LoadDanhSachDichVu();
+                btnPhong.Size = new Size(105, 33);
+            }
+
+
         }
     }
 }

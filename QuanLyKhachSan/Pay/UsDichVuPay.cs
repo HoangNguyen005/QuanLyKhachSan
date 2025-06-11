@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyKhachSan.DichVu;
 
 namespace QuanLyKhachSan
 {
@@ -16,7 +17,11 @@ namespace QuanLyKhachSan
         {
             InitializeComponent();
         }
-
+        int cheDo=0;
+        public int CheDo
+        {
+            get =>cheDo; set => cheDo = value;
+        }
         public string MaDichVu
         {
             get => lbRoomNumber.Text;
@@ -93,8 +98,12 @@ namespace QuanLyKhachSan
 
             //if (lbStatus.Text != "Trống") return;
             //Global.MaDichVu = int.Parse(lbRoomNumber.Text.Trim());
-            btnUcThem.Visible = true; // Hiện lại button đã ẩn
-            
+            if(cheDo==0) btnUcThem.Visible = true; // Hiện lại button đã ẩn
+            else if (cheDo == 1)
+            {
+                Global.MaDichVu = int.Parse(lbRoomNumber.Text.Trim());
+                ((frmDichVu)this.ParentForm).LoadDuLieu();
+            }
 
 
         }
