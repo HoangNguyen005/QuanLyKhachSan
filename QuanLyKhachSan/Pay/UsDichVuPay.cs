@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyKhachSan.DichVu;
 
 namespace QuanLyKhachSan
 {
@@ -16,7 +17,11 @@ namespace QuanLyKhachSan
         {
             InitializeComponent();
         }
-
+        int cheDo=0;
+        public int CheDo
+        {
+            get =>cheDo; set => cheDo = value;
+        }
         public string MaDichVu
         {
             get => lbRoomNumber.Text;
@@ -30,19 +35,7 @@ namespace QuanLyKhachSan
             set
             {
                 lbStatus.Text = value;
-                /* if (value == "Trống")
-                 {
-                     guna2Panel3.FillColor = Color.Transparent;
-                     lbRoomNumber.ForeColor = Color.Black;
-                     lbStatus.ForeColor = Color.Black;
-                     category.ForeColor = Color.Black;
-                     lbRoomNumber.BackColor = Color.White;
-                     lbStatus.BackColor = Color.White;
-                     category.BackColor = Color.White;
-                 }
-                 // else
-                 //   guna2Panel3.FillColor = Color.Transparent;
-                */
+
             }
         }
 
@@ -51,11 +44,6 @@ namespace QuanLyKhachSan
             get => category.Text;
             set => category.Text = value;
         }
-
-
-
-
-        // Tương tự cho các thuộc tính như TenKhach, SoNgay, DonDep, etc.
 
         private void RegisterClickEvents(Control parent)
         {
@@ -67,11 +55,7 @@ namespace QuanLyKhachSan
                     RegisterClickEvents(ctrl); // Đệ quy cho control con
                     btnUcThem.Visible = false; // Ẩn button khỏi giao diện
                 }
-                /* parent.Click += usDichVu_Click;
-                 foreach (Control ctrl in parent.Controls)
-                 {
-                     RegisterClickEvents(ctrl); // Gán đệ quy cho tất cả control con
-                 }*/
+
             }
         }
         private void UsDichVuPay_Load(object sender, EventArgs e)
@@ -90,11 +74,12 @@ namespace QuanLyKhachSan
 
         private void UsDichVuPay_Click(object sender, EventArgs e)
         {
-
-            //if (lbStatus.Text != "Trống") return;
-            //Global.MaDichVu = int.Parse(lbRoomNumber.Text.Trim());
-            btnUcThem.Visible = true; // Hiện lại button đã ẩn
-            
+            if(cheDo==0) btnUcThem.Visible = true; // Hiện lại button đã ẩn
+            else if (cheDo == 1)
+            {
+                Global.MaDichVu = int.Parse(lbRoomNumber.Text.Trim());
+                ((frmDichVu)this.ParentForm).LoadDuLieu();
+            }
 
 
         }

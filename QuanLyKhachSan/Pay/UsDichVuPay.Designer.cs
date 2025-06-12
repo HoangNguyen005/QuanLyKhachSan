@@ -44,7 +44,7 @@
             this.guna2Panel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2Panel3.BorderColor = System.Drawing.Color.Gray;
             this.guna2Panel3.BorderRadius = 25;
-            this.guna2Panel3.BorderThickness = 2;
+            this.guna2Panel3.BorderThickness = 1;
             this.guna2Panel3.Controls.Add(this.guna2Panel1);
             this.guna2Panel3.Controls.Add(this.lbStatus);
             this.guna2Panel3.Controls.Add(this.category);

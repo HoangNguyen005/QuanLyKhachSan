@@ -107,7 +107,7 @@
             this.roomManage.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.roomManage.Size = new System.Drawing.Size(202, 49);
             this.roomManage.TabIndex = 11;
-            this.roomManage.Text = "Quản lý phòng";
+            this.roomManage.Text = "Quản lý";
             this.roomManage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.roomManage.UseVisualStyleBackColor = false;
             this.roomManage.Click += new System.EventHandler(this.roomManage_Click);

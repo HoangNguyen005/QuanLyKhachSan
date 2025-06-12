@@ -271,5 +271,15 @@ namespace QuanLyKhachSan
         {
             enable(false);
         }
+
+        private void cbFloor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDichVu_Click(object sender, EventArgs e)
+        {
+            ((frmMain)this.ParentForm).DichVu();
+        }
     }
 }

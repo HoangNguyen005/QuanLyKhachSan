@@ -1,4 +1,5 @@
 ﻿using Myproject1;
+using QuanLyKhachSan.DichVu;
 using QuanLyKhachSan.Pay;
 using System;
 using System.Collections.Generic;
@@ -138,6 +139,27 @@ namespace QuanLyKhachSan
             {
                 MessageBox.Show("Bạn không có quyền truy cập trang này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        public void DichVu(int CheDo=0)
+        {
+            if(CheDo==0)
+            openChild(new frmDichVu());
+            else openChild(new frmRoomManage());
+        }
+        public void Close1()
+        {
+            DialogResult re = new DialogResult();
+            re=MessageBox.Show("Bạn chắc chắn muốn đăng xuất!", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (re == DialogResult.Yes) {
+
+                this.Hide();
+                frmLogin login = new frmLogin();
+                login.Show();
+                //this.Close();
+                //this.Close();
+
+            }
+            else return;
         }
     }
 }

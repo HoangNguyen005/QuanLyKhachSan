@@ -55,9 +55,10 @@ namespace QuanLyKhachSan
 
                  if (userName != "" && password != "")
                 {
+                    this.Hide();// ẩn
                     Form main = new frmMain();
-                    main.ShowDialog();
-                    this.Close();
+                    main.FormClosed += (s, args) => this.Close(); // khi form main đóng thì login cũng đóng
+                    main.Show();
                 } else
                 {
                     MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);

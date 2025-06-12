@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKhachSan.Pay;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace QuanLyKhachSan
 {
@@ -19,6 +21,7 @@ namespace QuanLyKhachSan
         private SqlConnection mySqlConnection;
         //định nghĩa đối tượng truy vấn/cập nhật dữ liệu
         private SqlCommand mySqlCommand;
+        
         public frmHome()
         {
             InitializeComponent();
@@ -56,6 +59,7 @@ namespace QuanLyKhachSan
             lbFullRoom.Text = $"{fullRoom}/{allRoom}";
             //fullRoom;
             //lbAllRoom.Text = allRoom;
+            lbname.Text=  Global.AUTHORIZATION;
 
         }
 
@@ -132,6 +136,22 @@ namespace QuanLyKhachSan
 
             }
         }
+        private void VatTu()
+        {
+            mySqlConnection = new SqlConnection(conStr);
+            mySqlConnection.Open();
+
+            string query = "select count(MaDichVu) as 'count' from dbo.DichVu";
+            mySqlCommand = new SqlCommand(query, mySqlConnection);
+            SqlDataReader reader = mySqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                lbVatTu.Text =  $"{reader["count"].ToString()}%";
+                progress.Value = int.Parse(reader["count"].ToString());
+            }
+            
+        }
 
 
         private void frmHome_Load(object sender, EventArgs e)
@@ -140,7 +160,67 @@ namespace QuanLyKhachSan
             statusEmployee();
             hoadon();
             LoadThongBao();
+            VatTu();
+            BieuDo();
         }
+
+        private void BieuDo()
+        {
+            SqlConnection conn = new SqlConnection(conStr);
+            conn.Open();
+
+            // 2. Truy vấn doanh thu theo tháng
+            string query = @"
+        SELECT 
+    MONTH(NgayThanhToan) AS Thang, 
+    SUM(ISNULL(TongTien, 0)) AS DoanhThu
+FROM ThanhToan
+GROUP BY MONTH(NgayThanhToan)
+ORDER BY Thang";
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+            chart1.Legends.Clear(); // ❌ Xóa phần chú thích "Series1"
+
+            ChartArea area = new ChartArea("DoanhThuArea");
+            area.AxisX.MajorGrid.Enabled = false;   // ❌ Tắt grid dọc
+            area.AxisY.MajorGrid.Enabled = false;   // ❌ Tắt grid ngang
+            area.AxisX.LineWidth = 0;               // ❌ Tắt đường trục X
+            area.AxisY.LineWidth = 0;               // ❌ Tắt đường trục Y
+            area.AxisY.LabelStyle.Enabled = false;  // ❌ Ẩn số trục Y
+            area.BackColor = Color.White;
+            chart1.ChartAreas.Add(area);
+
+            Series series = new Series("Doanh thu")
+            {
+                ChartType = SeriesChartType.Column,
+                Color = Color.Teal,
+                IsValueShownAsLabel = true,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                LabelForeColor = Color.Black,
+                LabelFormat = "#,##0",
+            };
+
+            while (reader.Read())
+            {
+                // Kiểm tra nếu tháng hoặc doanh thu bị NULL thì bỏ qua dòng đó
+                if (reader.IsDBNull(0) || reader.IsDBNull(1))
+                    continue;
+
+                string thang = "Tháng " + reader.GetInt32(0).ToString();
+                double doanhThu = Convert.ToDouble(reader[1]);
+                series.Points.AddXY(thang, doanhThu);
+            }
+
+            chart1.Series.Add(series);
+        }
+
+
+        
+        
 
         private void guna2CircleProgressBar1_ValueChanged(object sender, EventArgs e)
         {
@@ -165,7 +245,8 @@ namespace QuanLyKhachSan
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-
+            Form DoanhThu = new frmDoanhThu();
+            DoanhThu.ShowDialog();
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -179,6 +260,16 @@ namespace QuanLyKhachSan
         }
 
         private void lbNghi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbDangXuat_Click(object sender, EventArgs e)
+        {
+            ((frmMain)this.ParentForm).Close1();
+        }
+
+        private void lbVatTu_Click(object sender, EventArgs e)
         {
 
         }

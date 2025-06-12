@@ -59,6 +59,7 @@
             this.cbRoomStatus = new System.Windows.Forms.ComboBox();
             this.tbDescribe = new System.Windows.Forms.RichTextBox();
             this.describe = new System.Windows.Forms.Label();
+            this.btnDichVu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -142,7 +143,7 @@
             // 
             this.lbUtilities.AutoSize = true;
             this.lbUtilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUtilities.Location = new System.Drawing.Point(583, 120);
+            this.lbUtilities.Location = new System.Drawing.Point(583, 141);
             this.lbUtilities.Name = "lbUtilities";
             this.lbUtilities.Size = new System.Drawing.Size(87, 25);
             this.lbUtilities.TabIndex = 8;
@@ -152,7 +153,7 @@
             // 
             this.floor.AutoSize = true;
             this.floor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.floor.Location = new System.Drawing.Point(583, 25);
+            this.floor.Location = new System.Drawing.Point(597, 56);
             this.floor.Name = "floor";
             this.floor.Size = new System.Drawing.Size(64, 25);
             this.floor.TabIndex = 9;
@@ -162,7 +163,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(583, 74);
+            this.label4.Location = new System.Drawing.Point(583, 100);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 25);
             this.label4.TabIndex = 10;
@@ -197,10 +198,11 @@
             "8",
             "9",
             "10"});
-            this.cbFloor.Location = new System.Drawing.Point(709, 25);
+            this.cbFloor.Location = new System.Drawing.Point(709, 53);
             this.cbFloor.Name = "cbFloor";
             this.cbFloor.Size = new System.Drawing.Size(309, 33);
             this.cbFloor.TabIndex = 12;
+            this.cbFloor.SelectedIndexChanged += new System.EventHandler(this.cbFloor_SelectedIndexChanged);
             // 
             // cbNumberBed
             // 
@@ -214,7 +216,7 @@
             "2",
             "3",
             "4"});
-            this.cbNumberBed.Location = new System.Drawing.Point(709, 74);
+            this.cbNumberBed.Location = new System.Drawing.Point(709, 97);
             this.cbNumberBed.Name = "cbNumberBed";
             this.cbNumberBed.Size = new System.Drawing.Size(309, 33);
             this.cbNumberBed.TabIndex = 13;
@@ -224,7 +226,7 @@
             this.utilities.BackColor = System.Drawing.SystemColors.ControlLight;
             this.utilities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.utilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.utilities.Location = new System.Drawing.Point(709, 123);
+            this.utilities.Location = new System.Drawing.Point(709, 139);
             this.utilities.Name = "utilities";
             this.utilities.ReadOnly = true;
             this.utilities.Size = new System.Drawing.Size(309, 59);
@@ -449,12 +451,25 @@
             this.describe.TabIndex = 26;
             this.describe.Text = "Mô tả:";
             // 
+            // btnDichVu
+            // 
+            this.btnDichVu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDichVu.BackColor = System.Drawing.Color.White;
+            this.btnDichVu.Location = new System.Drawing.Point(903, 12);
+            this.btnDichVu.Name = "btnDichVu";
+            this.btnDichVu.Size = new System.Drawing.Size(135, 23);
+            this.btnDichVu.TabIndex = 28;
+            this.btnDichVu.Text = "Quản lí dịch vụ";
+            this.btnDichVu.UseVisualStyleBackColor = false;
+            this.btnDichVu.Click += new System.EventHandler(this.btnDichVu_Click);
+            // 
             // frmRoomManage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1050, 750);
+            this.Controls.Add(this.btnDichVu);
             this.Controls.Add(this.tbDescribe);
             this.Controls.Add(this.describe);
             this.Controls.Add(this.cbRoomStatus);
@@ -526,5 +541,6 @@
         private System.Windows.Forms.ComboBox cbRoomStatus;
         private System.Windows.Forms.RichTextBox tbDescribe;
         private System.Windows.Forms.Label describe;
+        private System.Windows.Forms.Button btnDichVu;
     }
 }

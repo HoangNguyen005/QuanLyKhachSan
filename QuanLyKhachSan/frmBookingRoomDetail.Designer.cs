@@ -206,6 +206,7 @@
             this.msgErrorIsNotNumber.TabIndex = 14;
             this.msgErrorIsNotNumber.Text = "Trường này phải là số";
             this.msgErrorIsNotNumber.Visible = false;
+            this.msgErrorIsNotNumber.Click += new System.EventHandler(this.msgErrorIsNotNumber_Click);
             // 
             // lbReturnDate
             // 
