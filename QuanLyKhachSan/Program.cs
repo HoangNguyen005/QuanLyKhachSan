@@ -20,7 +20,7 @@ namespace QuanLyKhachSan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new frmDichVu());
+            Application.Run(new frmLogin());
         }
     }
 }
