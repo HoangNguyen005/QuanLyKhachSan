@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lbFullRoom = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,8 +45,11 @@
             this.lbHoaDon = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnGui = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2Shapes1 = new Guna.UI2.WinForms.Guna2Shapes();
@@ -55,26 +58,21 @@
             this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnDoanhThu = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lbname = new System.Windows.Forms.Label();
             this.lbDangXuat = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2GradientCircleButton1 = new Guna.UI2.WinForms.Guna2GradientCircleButton();
-            this.btnGui = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2Panel9 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
             this.guna2Panel6.SuspendLayout();
+            this.guna2Panel9.SuspendLayout();
             this.guna2Panel7.SuspendLayout();
             this.guna2Panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.guna2Panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -247,23 +245,11 @@
             this.guna2Panel5.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel5.BorderRadius = 10;
             this.guna2Panel5.BorderThickness = 1;
-            this.guna2Panel5.Controls.Add(this.label5);
             this.guna2Panel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.guna2Panel5.Location = new System.Drawing.Point(12, 566);
             this.guna2Panel5.Name = "guna2Panel5";
             this.guna2Panel5.Size = new System.Drawing.Size(225, 115);
             this.guna2Panel5.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 25);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Sử dụng";
             // 
             // guna2Panel6
             // 
@@ -281,6 +267,54 @@
             this.guna2Panel6.Size = new System.Drawing.Size(443, 669);
             this.guna2Panel6.TabIndex = 1;
             this.guna2Panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel6_Paint);
+            // 
+            // guna2Panel9
+            // 
+            this.guna2Panel9.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel9.BorderRadius = 10;
+            this.guna2Panel9.Controls.Add(this.label10);
+            this.guna2Panel9.Controls.Add(this.label9);
+            this.guna2Panel9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.guna2Panel9.Location = new System.Drawing.Point(26, 91);
+            this.guna2Panel9.Name = "guna2Panel9";
+            this.guna2Panel9.Size = new System.Drawing.Size(325, 69);
+            this.guna2Panel9.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 36);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(175, 16);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Hôm nay đón  đoàn đại biểu";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
+            this.label9.Location = new System.Drawing.Point(13, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Admin";
+            // 
+            // btnGui
+            // 
+            this.btnGui.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnGui.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnGui.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnGui.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnGui.FillColor = System.Drawing.Color.White;
+            this.btnGui.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnGui.ForeColor = System.Drawing.Color.White;
+            this.btnGui.Image = global::QuanLyKhachSan.Properties.Resources.mn;
+            this.btnGui.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnGui.Location = new System.Drawing.Point(391, 616);
+            this.btnGui.Name = "btnGui";
+            this.btnGui.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnGui.Size = new System.Drawing.Size(40, 40);
+            this.btnGui.TabIndex = 3;
             // 
             // guna2TextBox1
             // 
@@ -394,6 +428,22 @@
             this.guna2Panel8.Size = new System.Drawing.Size(302, 218);
             this.guna2Panel8.TabIndex = 0;
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(2, 43);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(300, 172);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chartDoanhThu";
+            // 
             // btnDoanhThu
             // 
             this.btnDoanhThu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -445,22 +495,6 @@
             this.lbDangXuat.Text = "Đăng xuất";
             this.lbDangXuat.Click += new System.EventHandler(this.lbDangXuat_Click);
             // 
-            // chart1
-            // 
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
-            this.chart1.Location = new System.Drawing.Point(2, 43);
-            this.chart1.Name = "chart1";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart1.Series.Add(series5);
-            this.chart1.Size = new System.Drawing.Size(300, 172);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chartDoanhThu";
-            // 
             // guna2GradientCircleButton1
             // 
             this.guna2GradientCircleButton1.BorderColor = System.Drawing.Color.Silver;
@@ -478,54 +512,6 @@
             this.guna2GradientCircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2GradientCircleButton1.Size = new System.Drawing.Size(40, 40);
             this.guna2GradientCircleButton1.TabIndex = 4;
-            // 
-            // btnGui
-            // 
-            this.btnGui.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnGui.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnGui.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnGui.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGui.FillColor = System.Drawing.Color.White;
-            this.btnGui.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnGui.ForeColor = System.Drawing.Color.White;
-            this.btnGui.Image = global::QuanLyKhachSan.Properties.Resources.mn;
-            this.btnGui.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnGui.Location = new System.Drawing.Point(391, 616);
-            this.btnGui.Name = "btnGui";
-            this.btnGui.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnGui.Size = new System.Drawing.Size(40, 40);
-            this.btnGui.TabIndex = 3;
-            // 
-            // guna2Panel9
-            // 
-            this.guna2Panel9.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel9.BorderRadius = 10;
-            this.guna2Panel9.Controls.Add(this.label10);
-            this.guna2Panel9.Controls.Add(this.label9);
-            this.guna2Panel9.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.guna2Panel9.Location = new System.Drawing.Point(26, 91);
-            this.guna2Panel9.Name = "guna2Panel9";
-            this.guna2Panel9.Size = new System.Drawing.Size(325, 69);
-            this.guna2Panel9.TabIndex = 4;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
-            this.label9.Location = new System.Drawing.Point(13, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(45, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Admin";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 36);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 16);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Hôm nay đón  đoàn đại biểu";
             // 
             // frmHome
             // 
@@ -554,17 +540,15 @@
             this.guna2Panel3.PerformLayout();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
-            this.guna2Panel5.ResumeLayout(false);
-            this.guna2Panel5.PerformLayout();
             this.guna2Panel6.ResumeLayout(false);
             this.guna2Panel6.PerformLayout();
+            this.guna2Panel9.ResumeLayout(false);
+            this.guna2Panel9.PerformLayout();
             this.guna2Panel7.ResumeLayout(false);
             this.guna2Panel7.PerformLayout();
             this.guna2Panel8.ResumeLayout(false);
             this.guna2Panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.guna2Panel9.ResumeLayout(false);
-            this.guna2Panel9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,7 +565,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2CircleProgressBar progress;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel7;

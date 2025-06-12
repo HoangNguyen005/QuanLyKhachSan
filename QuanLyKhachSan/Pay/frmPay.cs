@@ -146,10 +146,11 @@ namespace QuanLyKhachSan
                 conn.Close();
             }
         }
-
+        Size originalSize;
         private void frmPay_Load(object sender, EventArgs e)
         {
             LoadDanhSachPhongAsync(0, 0);
+            originalSize = guna2Panel2.Size;
         }
         //table dung chung cho
         // private DataTable dt;
@@ -211,8 +212,26 @@ namespace QuanLyKhachSan
                         }
                         if (dt.Rows.Count > 0 && dt.Rows[0]["MoTa"].ToString() == "R")
                         {
-                            guna2Panel2.Size = new Size(506, 645);
+                            //guna2Panel2.Size = originalSize;
+                            Size defaultSize = new Size(506, 645);
+
+                            if (guna2Panel3.Height < 700)
+                            {
+                                guna2Panel2.Size = new Size(506, 645);
+                                guna2Panel3.Location = new Point(519, 49);
+                            }
+                            else
+                            {
+                                guna2Panel3.Location = new Point(665, 49);
+                                guna2Panel2.Width = guna2Panel3.Width-135;
+                                //guna2Panel3.Size = guna2Panel2.Size;
+
+                            }
+
                             guna2Panel3.Visible = true;
+                            /* if (guna2Panel3.Size == new Size(506, 645)) guna2Panel2.Size = new Size(506, 645);
+                             else guna2Panel3.Size = guna2Panel2.Size;
+                                 guna2Panel3.Visible = true;*/
                             txtCustomerName.Text = $"Tên: {dt.Rows[0]["HoTen"].ToString()}";
                             txtPhoneNumber.Text = $"SĐT: {dt.Rows[0]["SoDienThoai"].ToString()}";
                             txtIDCard.Text = $"CCCD: {dt.Rows[0]["CMND_CCCD"].ToString()}";
@@ -643,6 +662,11 @@ namespace QuanLyKhachSan
             }
 
 
+        }
+
+        private void full(object sender, EventArgs e)
+        {
+            guna2Panel2.Size = new Size(833, 969);
         }
     }
 }
