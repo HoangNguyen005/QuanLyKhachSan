@@ -20,7 +20,7 @@ namespace QuanLyKhachSan.Pay
             maHoaDon = MaHoaDon;
         }
         private string conStr = "Data Source=(local);Initial Catalog=QuanLyKhachSan;Integrated Security=True";
-        // ❗Hàm này CHỈ trả về dữ liệu
+
         public DataTable GetChiTietHoaDon(int maHoaDon)
         {
             DataTable dt = new DataTable();
@@ -42,7 +42,6 @@ namespace QuanLyKhachSan.Pay
             return dt;
         }
 
-        // ❗Hàm này dùng để gán dữ liệu vào DataGridView
         private void LoadChiTietHoaDon(int maHoaDon)
         {
             DataTable dt = GetChiTietHoaDon(maHoaDon);
@@ -74,7 +73,7 @@ namespace QuanLyKhachSan.Pay
                 {
                     if (reader.Read())
                     {
-                        txtMHoaDon.Text = reader["MaHoaDon"].ToString();
+                        txtMHoaDon.Text = $"HD{reader["MaHoaDon"].ToString()}";
                         txtNgay.Text = Convert.ToDateTime(reader["NgayLap"]).ToShortDateString();
                         txtTen.Text = reader["HoTen"].ToString();
                         txtSDT.Text = reader["SoDienThoai"].ToString();

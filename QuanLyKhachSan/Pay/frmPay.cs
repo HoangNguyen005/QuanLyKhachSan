@@ -37,13 +37,6 @@ namespace QuanLyKhachSan
         {
             InitializeComponent();
             guna2Panel2.Size = new Size(1016, 645);
-            // int phong=Phong;
-            if (i == 1) LoiGoi();
-        }
-        private void LoiGoi()
-        {
-            LoadUse();
-            LoadDataPhong();
         }
         public class Phong
         {
@@ -99,7 +92,7 @@ namespace QuanLyKhachSan
                 return list;
             });
 
-            // Sau khi có dữ liệu, load vào UI
+            //load vào UI
             flowLayoutPanel1.SuspendLayout();
 
             foreach (var phong in danhSachPhong)
@@ -113,18 +106,13 @@ namespace QuanLyKhachSan
             }
 
             flowLayoutPanel1.ResumeLayout();
-            // lblStatus.Text = $"Đã tải {danhSachPhong.Count} phòng.";
         }
 
         private void LoadDanhSachDichVu()
         {
             flowLayoutPanel1.Controls.Clear();
             string query = "";
-
-            // if (txtTimKiemDichVu.Text == "")
-            //{
             query = "SELECT dv.MaDichVu,dv.TenDichVu,dv.DonGia from DichVu dv  ";
-            // }
 
             using (SqlConnection conn = new SqlConnection(conStr))
             {
@@ -146,14 +134,10 @@ namespace QuanLyKhachSan
                 conn.Close();
             }
         }
-        Size originalSize;
         private void frmPay_Load(object sender, EventArgs e)
         {
             LoadDanhSachPhongAsync(0, 0);
-            originalSize = guna2Panel2.Size;
         }
-        //table dung chung cho
-        // private DataTable dt;
 
         public void LoadDataPhong()
         {
@@ -204,17 +188,6 @@ namespace QuanLyKhachSan
                         {
                             mmahoadon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
                             Global.MaHoaDon = Convert.ToInt32(dt.Rows[0]["MaHoaDon"]);
-                        }
-                        else
-                        {
-                            mmahoadon = 0;
-                            Global.MaHoaDon = 0;
-                        }
-                        if (dt.Rows.Count > 0 && dt.Rows[0]["MoTa"].ToString() == "R")
-                        {
-                            //guna2Panel2.Size = originalSize;
-                            Size defaultSize = new Size(506, 645);
-
                             if (guna2Panel3.Height < 700)
                             {
                                 guna2Panel2.Size = new Size(506, 645);
@@ -223,15 +196,22 @@ namespace QuanLyKhachSan
                             else
                             {
                                 guna2Panel3.Location = new Point(665, 49);
-                                guna2Panel2.Width = guna2Panel3.Width-135;
-                                //guna2Panel3.Size = guna2Panel2.Size;
+                                guna2Panel2.Width = guna2Panel3.Width - 135;
 
                             }
 
                             guna2Panel3.Visible = true;
-                            /* if (guna2Panel3.Size == new Size(506, 645)) guna2Panel2.Size = new Size(506, 645);
-                             else guna2Panel3.Size = guna2Panel2.Size;
-                                 guna2Panel3.Visible = true;*/
+                        }
+                        else
+                        {
+                            mmahoadon = 0;
+                            Global.MaHoaDon = 0;
+                        }
+                        if (dt.Rows.Count > 0 && dt.Rows[0]["MoTa"].ToString() == "R")
+                        {
+
+                            
+
                             txtCustomerName.Text = $"Tên: {dt.Rows[0]["HoTen"].ToString()}";
                             txtPhoneNumber.Text = $"SĐT: {dt.Rows[0]["SoDienThoai"].ToString()}";
                             txtIDCard.Text = $"CCCD: {dt.Rows[0]["CMND_CCCD"].ToString()}";
@@ -666,7 +646,7 @@ namespace QuanLyKhachSan
 
         private void full(object sender, EventArgs e)
         {
-            guna2Panel2.Size = new Size(833, 969);
+
         }
     }
 }

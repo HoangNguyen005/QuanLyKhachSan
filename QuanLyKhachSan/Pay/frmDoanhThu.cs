@@ -76,11 +76,6 @@ namespace QuanLyKhachSan.Pay
             btnXemDoanhThu.PerformClick();
         }
 
-        /*private void btnXemDoanhThu_Click(object sender, EventArgs e)
-        {
-
-        }*/
-
         private void dvgHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0) // đảm bảo không phải header
@@ -90,7 +85,6 @@ namespace QuanLyKhachSan.Pay
 
                 // Mở form hóa đơn
                 frmHoaDon HoaDon = new frmHoaDon(int.Parse(maHoaDon));
-               // HoaDon.MaHoaDon = int.Parse(maHoaDon); // gán mã hóa đơn cho form
                 HoaDon.ShowDialog();
             }
         }
