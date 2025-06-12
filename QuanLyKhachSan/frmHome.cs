@@ -109,7 +109,7 @@ namespace QuanLyKhachSan
 
             string query = "";
             query = $"SELECT * FROM ThongBao";
-            
+
 
 
             using (SqlConnection conn = new SqlConnection(conStr))
@@ -125,7 +125,7 @@ namespace QuanLyKhachSan
                     var uc = new UsHome();
                     uc.Name = reader["MaThongBao"].ToString();
                     uc.NoiDung = reader["NoiDung"].ToString();
-                    
+
 
                     flowLayoutPanel1.Controls.Add(uc);
                 }

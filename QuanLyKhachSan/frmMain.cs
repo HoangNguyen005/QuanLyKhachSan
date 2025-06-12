@@ -70,7 +70,7 @@ namespace QuanLyKhachSan
             if (Global.AUTHORIZATION == "Admin")
             {
                 handleActive(sender);
-                openChild(new frmClient());
+                openChild(new frmImployee());
             }
             else
             {
